@@ -1,0 +1,40 @@
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\bin\Debug\net5.0\Proiect.exe
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\bin\Debug\net5.0\Proiect.deps.json
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\bin\Debug\net5.0\Proiect.runtimeconfig.json
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\bin\Debug\net5.0\Proiect.runtimeconfig.dev.json
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\bin\Debug\net5.0\Proiect.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\bin\Debug\net5.0\ref\Proiect.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\bin\Debug\net5.0\Proiect.pdb
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\Proiect.csprojAssemblyReference.cache
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\Proiect.GeneratedMSBuildEditorConfig.editorconfig
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\Proiect.AssemblyInfoInputs.cache
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\Proiect.AssemblyInfo.cs
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\Proiect.csproj.CoreCompileInputs.cache
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\Proiect.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\ref\Proiect.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\Proiect.pdb
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\Lab 1\Tema\Proiect\Proiect\obj\Debug\net5.0\Proiect.genruntimeconfig.cache
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.csprojAssemblyReference.cache
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.GeneratedMSBuildEditorConfig.editorconfig
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.AssemblyInfoInputs.cache
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.AssemblyInfo.cs
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.csproj.CoreCompileInputs.cache
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Proiect.exe
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Proiect.deps.json
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Proiect.runtimeconfig.json
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Proiect.runtimeconfig.dev.json
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Proiect.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\ref\Proiect.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Proiect.pdb
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\LibrarieClase.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\NivelAccesData.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\LibrarieClase.pdb
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\bin\Debug\net5.0\NivelAccesData.pdb
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.csproj.CopyComplete
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\ref\Proiect.dll
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.pdb
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Proiect\obj\Debug\net5.0\Proiect.genruntimeconfig.cache

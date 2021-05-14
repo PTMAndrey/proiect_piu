@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "dMiVY2BEsmhZJSfRe3rz5V8mEu2sDZLAfYgokDdRh0Vm/BlyXK5NWtiOqOhH9T91Gaj/HQ87Mi21Ff85ZDiIAQ==",
+  "success": true,
+  "projectFilePath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dorin\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.1\\microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
+    "C:\\Users\\dorin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\dorin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

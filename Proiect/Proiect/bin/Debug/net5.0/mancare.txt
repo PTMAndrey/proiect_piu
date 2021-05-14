@@ -1,0 +1,4 @@
+1;Ciorba radauteana;19,98
+2;Mititei;2,5
+3;pizza;17,99
+4;Cartofi pai;3,5
