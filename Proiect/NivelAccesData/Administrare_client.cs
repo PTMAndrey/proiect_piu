@@ -22,7 +22,7 @@ namespace NivelAccesData
             //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
 
-        public ArrayList GetInfoClient()
+        public ArrayList GetInfo()
         {
             ArrayList _client = new ArrayList();
 
@@ -61,7 +61,7 @@ namespace NivelAccesData
             return null;
         }
         
-        public void AddClientFisier(Client b)
+        public void AddClient(Client b)
         {
             //instructiunea 'using' va apela la final swFisierText.Close();
             //al doilea parametru setat la 'true' al constructorului StreamWriter indica modul 'append' de deschidere al fisierului

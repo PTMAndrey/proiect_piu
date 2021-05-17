@@ -22,7 +22,7 @@ namespace NivelAccesData
             //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
 
-        public ArrayList GetInfoMasa()
+        public ArrayList GetInfo()
         {
             ArrayList _masa = new ArrayList();
 
@@ -85,14 +85,14 @@ namespace NivelAccesData
                 IStocareMasa stocare_info_masa = new Administrare_masa();
                 for (int i = 0; i < _masa.Count; i++)
                 {
-                    stocare_info_masa.AddMasaFisier((Masa)_masa[i]);
+                    stocare_info_masa.AddMasa((Masa)_masa[i]);
                 }
                 return true;
             }
             else
                 return false;
         }
-        public void AddMasaFisier(Masa b)
+        public void AddMasa(Masa b)
         {
             /*Citesc din fisier codurile unice, apoi verific daca codul unic generat cand s-a introdus masa la consola este egal cu vreun cod deja existent. Daca da, generez pana cand cele doua nu sunt egale*/
             ArrayList _masa = new ArrayList();

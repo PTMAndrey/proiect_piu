@@ -5,10 +5,10 @@ using LibrarieClase;
 namespace NivelAccesData
 {
     //definitia interfetei
-    public interface IStocareClient
+    public interface IStocareMeniu
     {
         ArrayList GetInfo();
-        Client CautaClient(string cnp);
-        void AddClient(Client b);
+        Meniu GetInfo(string denumire);
+        void Add(Meniu b);
     }
 }
