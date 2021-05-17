@@ -47,6 +47,7 @@ namespace LibrarieClase
                 if (citit_din_consola == false) // citire din fisier
                 {
                     id = Convert.ToInt32(info_masa[0]);
+                    last_id = id;
                     ocupat = Convert.ToBoolean(info_masa[2]);
                     cod_unic = Convert.ToInt32(info_masa[3]);
 
@@ -60,7 +61,7 @@ namespace LibrarieClase
                 {
                     cod_unic = GenerareCodUnic();
                     //if (Validari.Verificare_CodUnic == true)
-                            ;
+                            
                     last_id++;
                     id = last_id;
                     ocupat = false; /*Daca se introduce manual o masa atunci codul va fi generat automat*/
@@ -88,13 +89,14 @@ namespace LibrarieClase
             return nr;
         }
 
-        public string Afisare_Masa(int id_pentru_afisare_info_client = 0)
+        public string ConversieLaSir_PentruAfisare(int id_pentru_afisare_info_client = 0)
         {
             if (id_pentru_afisare_info_client == 0) // afisare normala pt mese disponibile
             {
                 if (ocupat == false)
-                { 
-                    return $"\tMasa cu ID [ {id} ] se afla in [ {locatie_masa} ] si are [ {locuri} ] locuri disponibile.";
+                {
+                    //return $"\tMasa cu   ID [ {id} ]   se afla in    [ {locatie_masa}\t]\tsi are [ {locuri} ] locuri disponibile.";
+                    return $"\t\t[ {id} ] \t\t [ {locatie_masa} ] \t\t [ {locuri} ]";
                 }
                 /*else
                     s = $"\t[ OCUPAT ] Masa [ {id} ] nu este disponibila.";*/

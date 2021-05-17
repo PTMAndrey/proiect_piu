@@ -8,13 +8,12 @@ using LibrarieClase;
 
 namespace NivelAccesData
 {
-    public class Administrare_mancare : IStocareMancare
+    public class Administrare_meniu : IStocareMeniu
     {
-        string NumeFisier { get; set; }
+        string NumeFisier { get; set; } = "meniu.txt";
 
-        public Administrare_mancare()
+        public Administrare_meniu()
         {
-            this.NumeFisier = "mancare.txt";
             Stream sFisierText = File.Open(NumeFisier, FileMode.OpenOrCreate);
             sFisierText.Close();
 
@@ -23,12 +22,27 @@ namespace NivelAccesData
             //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
 
-        public ArrayList GetInfoMancare()
+        public ArrayList GetInfo()
         {
-            ArrayList _mancare = new ArrayList();
+            ArrayList _meniu = new ArrayList();
 
-            this.NumeFisier = "mancare.txt";
 
+            using (StreamReader sr = new StreamReader(NumeFisier))
+            {
+                string line;
+
+                //citeste cate o linie si creaza un obiect de tip Studenumiret pe baza datelor din linia citita
+                while ((line = sr.ReadLine()) != null)
+                {
+                    Meniu meniu = new Meniu(line);
+                    _meniu.Add(meniu);
+                }
+            }
+
+            return _meniu;
+        }
+        public Meniu GetInfo(string denumire)
+        {
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
                 string line;
@@ -36,18 +50,17 @@ namespace NivelAccesData
                 //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
                 while ((line = sr.ReadLine()) != null)
                 {
-                    Mancare mancareDinFisier = new Mancare(line); /* ATENTIE LA CONSTRUCTORUL ASTA*/
-                    _mancare.Add(mancareDinFisier);
+                    Meniu meniu = new Meniu(line);
+                    if ( (meniu.denumire).ToLower() == denumire.ToLower() )
+                        return meniu;
                 }
             }
 
-            return _mancare;
+            return null;
         }
 
-        public void AddMancareFisier(Mancare b)
+        public void Add(Meniu b)
         {
-            //instructiunea 'using' va apela la final swFisierText.Close();
-            //al doilea parametru setat la 'true' al constructorului StreamWriter indica modul 'append' de deschidere al fisierului
             using (StreamWriter swFisierText = new StreamWriter(NumeFisier, true))
             {
                 swFisierText.WriteLine(b.ConversieLaSir_PentruScriereInFisier());

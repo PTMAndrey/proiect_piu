@@ -48,7 +48,7 @@ namespace LibrarieClase
 
         }
 
-        public string Afisare_Client(Masa m)
+        public string ConversieLaSir_PentruAfisare(Masa m)
         {
             string s = $"\t[ {id} ]. Clientul [ {Nume} {Prenume} ] se afla la masa [ {ID_Masa} ]\n";
             
