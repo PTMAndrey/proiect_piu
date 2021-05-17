@@ -1,6 +1,0 @@
-1;ak 47;10,5
-2;Kahula's Jabi;20,30
-3;coca cola;3,5
-4;vodka;777,22
-5;Whiskey;89,99
-7;Maca^Software;666,66
