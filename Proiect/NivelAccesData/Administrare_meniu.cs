@@ -22,7 +22,7 @@ namespace NivelAccesData
             //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
 
-        public ArrayList GetInfo()
+        public ArrayList GetInfo() // preluare informatii din fisier
         {
             ArrayList _meniu = new ArrayList();
 
@@ -41,7 +41,7 @@ namespace NivelAccesData
 
             return _meniu;
         }
-        public Meniu GetInfo(string denumire)
+        public Meniu GetInfo(string denumire) // functie de cautare
         {
             using (StreamReader sr = new StreamReader(NumeFisier))
             {

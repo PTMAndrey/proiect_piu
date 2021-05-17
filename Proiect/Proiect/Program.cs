@@ -110,15 +110,7 @@ namespace Proiect
 
                     case "F":
                         {
-                            string denumire;
-                            Console.WriteLine("Numele alimentului pe care doriti sa il cautati:");
-                            denumire = Console.ReadLine();
-                            Meniu cautare;
-                            cautare = stocare_info_meniu.GetInfo(denumire);
-                            if (cautare != null)
-                                Console.Write(cautare.ConversieLaSir_PentruAfisare());
-                            else
-                                Console.WriteLine("Ne cerem scuze, dar optiunea cautata nu face parte din meniul nostru!");
+                            CautaAliment(stocare_info_meniu);
                             break;
                         }
 
@@ -431,11 +423,24 @@ namespace Proiect
         public static void AfisareMeniu(ArrayList meniu)
         {
             Console.WriteLine("\t\t[  Meniu  ]\n");
-            Console.WriteLine("\t ID \t   PRET \t\t\t NUME");
+            Console.WriteLine("\t ID \t   PRET \t\t NUME");
             for (int i = 0; i < meniu.Count; i++)
             {
                 Console.WriteLine(((Meniu)meniu[i]).ConversieLaSir_PentruAfisare());
             }
+        }
+
+        public static void CautaAliment(IStocareMeniu stocare_info_meniu)
+        {
+            string denumire;
+            Console.WriteLine("Numele alimentului pe care doriti sa il cautati:");
+            denumire = Console.ReadLine();
+            Meniu cautare;
+            cautare = stocare_info_meniu.GetInfo(denumire);
+            if (cautare != null)
+                Console.WriteLine(cautare.ConversieLaSir_PentruAfisare());
+            else
+                Console.WriteLine("Ne cerem scuze, dar optiunea cautata nu face parte din meniul nostru!");
         }
 
     }

@@ -1,6 +1,4 @@
-1;Pizza Capriciosa;19,5;Mancare
+1;Pizza;19,5;Mancare
 2;Coca Cola;3,5;Bautura
-3;Mozaic;12,5;Desert
-4;Ciorba;19;Mancare
-5;Cryoto's Power;28,99;Bautura
-6;Paine;2,5;Mancare
+3;Ciorba de fasole;8,5;Mancare
+4;Papanasi;5;Desert
