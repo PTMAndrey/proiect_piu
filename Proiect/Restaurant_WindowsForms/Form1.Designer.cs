@@ -50,9 +50,7 @@ namespace Restaurant_WindowsForms
             this.lblEroareNume = new System.Windows.Forms.Label();
             this.lblEroarePrenume = new System.Windows.Forms.Label();
             this.lblEroareCNP = new System.Windows.Forms.Label();
-            this.lblInfoRezervare = new System.Windows.Forms.Label();
             this.btnAfiseazaMeniu = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.lstMeniu = new System.Windows.Forms.ListBox();
             this.lblModificareMeniu = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -66,8 +64,12 @@ namespace Restaurant_WindowsForms
             this.lblDENUMIRE = new System.Windows.Forms.Label();
             this.lblTIP = new System.Windows.Forms.Label();
             this.btnCOMANDA = new System.Windows.Forms.Button();
+            this.grRezervareClient = new System.Windows.Forms.GroupBox();
+            this.grMeniu = new System.Windows.Forms.GroupBox();
             this.grLocatie.SuspendLayout();
             this.grMese.SuspendLayout();
+            this.grRezervareClient.SuspendLayout();
+            this.grMeniu.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNumeRestaurant
@@ -208,7 +210,7 @@ namespace Restaurant_WindowsForms
             // 
             this.lblNUME.AutoSize = true;
             this.lblNUME.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblNUME.Location = new System.Drawing.Point(86, 474);
+            this.lblNUME.Location = new System.Drawing.Point(17, 79);
             this.lblNUME.Name = "lblNUME";
             this.lblNUME.Size = new System.Drawing.Size(86, 34);
             this.lblNUME.TabIndex = 11;
@@ -218,7 +220,7 @@ namespace Restaurant_WindowsForms
             // 
             this.lblPRENUME.AutoSize = true;
             this.lblPRENUME.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPRENUME.Location = new System.Drawing.Point(86, 542);
+            this.lblPRENUME.Location = new System.Drawing.Point(17, 182);
             this.lblPRENUME.Name = "lblPRENUME";
             this.lblPRENUME.Size = new System.Drawing.Size(134, 34);
             this.lblPRENUME.TabIndex = 12;
@@ -226,7 +228,8 @@ namespace Restaurant_WindowsForms
             // 
             // txtNUME
             // 
-            this.txtNUME.Location = new System.Drawing.Point(241, 474);
+            this.txtNUME.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNUME.Location = new System.Drawing.Point(172, 79);
             this.txtNUME.Name = "txtNUME";
             this.txtNUME.PlaceholderText = " Numele de familie...";
             this.txtNUME.Size = new System.Drawing.Size(284, 27);
@@ -235,7 +238,8 @@ namespace Restaurant_WindowsForms
             // 
             // txtPRENUME
             // 
-            this.txtPRENUME.Location = new System.Drawing.Point(241, 542);
+            this.txtPRENUME.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPRENUME.Location = new System.Drawing.Point(172, 182);
             this.txtPRENUME.Name = "txtPRENUME";
             this.txtPRENUME.PlaceholderText = " Prenumele...";
             this.txtPRENUME.Size = new System.Drawing.Size(284, 27);
@@ -244,7 +248,8 @@ namespace Restaurant_WindowsForms
             // 
             // txtCNP
             // 
-            this.txtCNP.Location = new System.Drawing.Point(241, 610);
+            this.txtCNP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCNP.Location = new System.Drawing.Point(172, 284);
             this.txtCNP.Name = "txtCNP";
             this.txtCNP.PlaceholderText = " Cod numeric personal...";
             this.txtCNP.Size = new System.Drawing.Size(284, 27);
@@ -255,7 +260,7 @@ namespace Restaurant_WindowsForms
             // 
             this.lblCNP.AutoSize = true;
             this.lblCNP.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCNP.Location = new System.Drawing.Point(86, 610);
+            this.lblCNP.Location = new System.Drawing.Point(17, 284);
             this.lblCNP.Name = "lblCNP";
             this.lblCNP.Size = new System.Drawing.Size(65, 34);
             this.lblCNP.TabIndex = 15;
@@ -264,7 +269,7 @@ namespace Restaurant_WindowsForms
             // btnREZERVA
             // 
             this.btnREZERVA.Font = new System.Drawing.Font("Hobo Std", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnREZERVA.Location = new System.Drawing.Point(241, 686);
+            this.btnREZERVA.Location = new System.Drawing.Point(172, 373);
             this.btnREZERVA.Name = "btnREZERVA";
             this.btnREZERVA.Size = new System.Drawing.Size(134, 39);
             this.btnREZERVA.TabIndex = 17;
@@ -275,8 +280,9 @@ namespace Restaurant_WindowsForms
             // lblEroareNume
             // 
             this.lblEroareNume.AutoSize = true;
+            this.lblEroareNume.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblEroareNume.ForeColor = System.Drawing.Color.Transparent;
-            this.lblEroareNume.Location = new System.Drawing.Point(241, 507);
+            this.lblEroareNume.Location = new System.Drawing.Point(172, 112);
             this.lblEroareNume.Name = "lblEroareNume";
             this.lblEroareNume.Size = new System.Drawing.Size(15, 20);
             this.lblEroareNume.TabIndex = 18;
@@ -285,8 +291,9 @@ namespace Restaurant_WindowsForms
             // lblEroarePrenume
             // 
             this.lblEroarePrenume.AutoSize = true;
+            this.lblEroarePrenume.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblEroarePrenume.ForeColor = System.Drawing.Color.Transparent;
-            this.lblEroarePrenume.Location = new System.Drawing.Point(241, 572);
+            this.lblEroarePrenume.Location = new System.Drawing.Point(172, 212);
             this.lblEroarePrenume.Name = "lblEroarePrenume";
             this.lblEroarePrenume.Size = new System.Drawing.Size(15, 20);
             this.lblEroarePrenume.TabIndex = 19;
@@ -295,28 +302,19 @@ namespace Restaurant_WindowsForms
             // lblEroareCNP
             // 
             this.lblEroareCNP.AutoSize = true;
+            this.lblEroareCNP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblEroareCNP.ForeColor = System.Drawing.Color.Transparent;
-            this.lblEroareCNP.Location = new System.Drawing.Point(241, 640);
+            this.lblEroareCNP.Location = new System.Drawing.Point(172, 314);
             this.lblEroareCNP.Name = "lblEroareCNP";
             this.lblEroareCNP.Size = new System.Drawing.Size(15, 20);
             this.lblEroareCNP.TabIndex = 20;
             this.lblEroareCNP.Text = "*";
             // 
-            // lblInfoRezervare
-            // 
-            this.lblInfoRezervare.AutoSize = true;
-            this.lblInfoRezervare.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblInfoRezervare.Location = new System.Drawing.Point(86, 423);
-            this.lblInfoRezervare.Name = "lblInfoRezervare";
-            this.lblInfoRezervare.Size = new System.Drawing.Size(236, 34);
-            this.lblInfoRezervare.TabIndex = 21;
-            this.lblInfoRezervare.Text = "Rezervare la masa ";
-            // 
             // btnAfiseazaMeniu
             // 
             this.btnAfiseazaMeniu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAfiseazaMeniu.Font = new System.Drawing.Font("Hobo Std", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAfiseazaMeniu.Location = new System.Drawing.Point(970, 423);
+            this.btnAfiseazaMeniu.Location = new System.Drawing.Point(23, 67);
             this.btnAfiseazaMeniu.Name = "btnAfiseazaMeniu";
             this.btnAfiseazaMeniu.Size = new System.Drawing.Size(134, 39);
             this.btnAfiseazaMeniu.TabIndex = 22;
@@ -324,21 +322,12 @@ namespace Restaurant_WindowsForms
             this.btnAfiseazaMeniu.UseVisualStyleBackColor = true;
             this.btnAfiseazaMeniu.Click += new System.EventHandler(this.btnAfiseazaMeniu_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(693, 428);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 34);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Afiseaza meniu";
-            // 
             // lstMeniu
             // 
+            this.lstMeniu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lstMeniu.FormattingEnabled = true;
             this.lstMeniu.ItemHeight = 20;
-            this.lstMeniu.Location = new System.Drawing.Point(693, 488);
+            this.lstMeniu.Location = new System.Drawing.Point(203, 45);
             this.lstMeniu.Name = "lstMeniu";
             this.lstMeniu.Size = new System.Drawing.Size(411, 424);
             this.lstMeniu.TabIndex = 24;
@@ -348,7 +337,7 @@ namespace Restaurant_WindowsForms
             // 
             this.lblModificareMeniu.AutoSize = true;
             this.lblModificareMeniu.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblModificareMeniu.Location = new System.Drawing.Point(1266, 207);
+            this.lblModificareMeniu.Location = new System.Drawing.Point(1332, 55);
             this.lblModificareMeniu.Name = "lblModificareMeniu";
             this.lblModificareMeniu.Size = new System.Drawing.Size(212, 34);
             this.lblModificareMeniu.TabIndex = 35;
@@ -358,7 +347,7 @@ namespace Restaurant_WindowsForms
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(1421, 424);
+            this.label3.Location = new System.Drawing.Point(1487, 272);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 20);
             this.label3.TabIndex = 34;
@@ -368,7 +357,7 @@ namespace Restaurant_WindowsForms
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(1421, 356);
+            this.label4.Location = new System.Drawing.Point(1487, 204);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 33;
@@ -378,7 +367,7 @@ namespace Restaurant_WindowsForms
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(1421, 291);
+            this.label5.Location = new System.Drawing.Point(1487, 139);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 20);
             this.label5.TabIndex = 32;
@@ -387,7 +376,7 @@ namespace Restaurant_WindowsForms
             // btnMODIFICA
             // 
             this.btnMODIFICA.Font = new System.Drawing.Font("Hobo Std", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMODIFICA.Location = new System.Drawing.Point(1421, 470);
+            this.btnMODIFICA.Location = new System.Drawing.Point(1487, 318);
             this.btnMODIFICA.Name = "btnMODIFICA";
             this.btnMODIFICA.Size = new System.Drawing.Size(134, 39);
             this.btnMODIFICA.TabIndex = 31;
@@ -397,7 +386,7 @@ namespace Restaurant_WindowsForms
             // 
             // txtPret
             // 
-            this.txtPret.Location = new System.Drawing.Point(1421, 394);
+            this.txtPret.Location = new System.Drawing.Point(1487, 242);
             this.txtPret.Name = "txtPret";
             this.txtPret.PlaceholderText = " Pret produs";
             this.txtPret.Size = new System.Drawing.Size(284, 27);
@@ -407,7 +396,7 @@ namespace Restaurant_WindowsForms
             // 
             this.lblPRET.AutoSize = true;
             this.lblPRET.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPRET.Location = new System.Drawing.Point(1266, 394);
+            this.lblPRET.Location = new System.Drawing.Point(1332, 242);
             this.lblPRET.Name = "lblPRET";
             this.lblPRET.Size = new System.Drawing.Size(79, 34);
             this.lblPRET.TabIndex = 29;
@@ -415,7 +404,7 @@ namespace Restaurant_WindowsForms
             // 
             // txtDenumire
             // 
-            this.txtDenumire.Location = new System.Drawing.Point(1421, 326);
+            this.txtDenumire.Location = new System.Drawing.Point(1487, 174);
             this.txtDenumire.Name = "txtDenumire";
             this.txtDenumire.PlaceholderText = " Nume produs...";
             this.txtDenumire.Size = new System.Drawing.Size(284, 27);
@@ -423,7 +412,7 @@ namespace Restaurant_WindowsForms
             // 
             // txtTip
             // 
-            this.txtTip.Location = new System.Drawing.Point(1421, 258);
+            this.txtTip.Location = new System.Drawing.Point(1487, 106);
             this.txtTip.Name = "txtTip";
             this.txtTip.PlaceholderText = " Tip produs...";
             this.txtTip.Size = new System.Drawing.Size(284, 27);
@@ -433,7 +422,7 @@ namespace Restaurant_WindowsForms
             // 
             this.lblDENUMIRE.AutoSize = true;
             this.lblDENUMIRE.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDENUMIRE.Location = new System.Drawing.Point(1266, 326);
+            this.lblDENUMIRE.Location = new System.Drawing.Point(1332, 174);
             this.lblDENUMIRE.Name = "lblDENUMIRE";
             this.lblDENUMIRE.Size = new System.Drawing.Size(143, 34);
             this.lblDENUMIRE.TabIndex = 26;
@@ -443,7 +432,7 @@ namespace Restaurant_WindowsForms
             // 
             this.lblTIP.AutoSize = true;
             this.lblTIP.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTIP.Location = new System.Drawing.Point(1266, 258);
+            this.lblTIP.Location = new System.Drawing.Point(1332, 106);
             this.lblTIP.Name = "lblTIP";
             this.lblTIP.Size = new System.Drawing.Size(55, 34);
             this.lblTIP.TabIndex = 25;
@@ -453,19 +442,54 @@ namespace Restaurant_WindowsForms
             // 
             this.btnCOMANDA.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCOMANDA.Font = new System.Drawing.Font("Hobo Std", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCOMANDA.Location = new System.Drawing.Point(1157, 662);
+            this.btnCOMANDA.Location = new System.Drawing.Point(23, 336);
             this.btnCOMANDA.Name = "btnCOMANDA";
             this.btnCOMANDA.Size = new System.Drawing.Size(134, 39);
             this.btnCOMANDA.TabIndex = 36;
             this.btnCOMANDA.Text = "COMANDA";
             this.btnCOMANDA.Click += new System.EventHandler(this.btnCOMANDA_Click);
             // 
+            // grRezervareClient
+            // 
+            this.grRezervareClient.Controls.Add(this.txtCNP);
+            this.grRezervareClient.Controls.Add(this.lblNUME);
+            this.grRezervareClient.Controls.Add(this.lblPRENUME);
+            this.grRezervareClient.Controls.Add(this.txtNUME);
+            this.grRezervareClient.Controls.Add(this.txtPRENUME);
+            this.grRezervareClient.Controls.Add(this.lblCNP);
+            this.grRezervareClient.Controls.Add(this.lblEroareNume);
+            this.grRezervareClient.Controls.Add(this.lblEroarePrenume);
+            this.grRezervareClient.Controls.Add(this.lblEroareCNP);
+            this.grRezervareClient.Controls.Add(this.btnREZERVA);
+            this.grRezervareClient.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.grRezervareClient.Location = new System.Drawing.Point(98, 470);
+            this.grRezervareClient.Name = "grRezervareClient";
+            this.grRezervareClient.Size = new System.Drawing.Size(480, 496);
+            this.grRezervareClient.TabIndex = 37;
+            this.grRezervareClient.TabStop = false;
+            this.grRezervareClient.Text = "Rezervare la masa";
+            // 
+            // grMeniu
+            // 
+            this.grMeniu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.grMeniu.Controls.Add(this.lstMeniu);
+            this.grMeniu.Controls.Add(this.btnAfiseazaMeniu);
+            this.grMeniu.Controls.Add(this.btnCOMANDA);
+            this.grMeniu.Font = new System.Drawing.Font("Hobo Std", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.grMeniu.Location = new System.Drawing.Point(628, 470);
+            this.grMeniu.Name = "grMeniu";
+            this.grMeniu.Size = new System.Drawing.Size(645, 496);
+            this.grMeniu.TabIndex = 21;
+            this.grMeniu.TabStop = false;
+            this.grMeniu.Text = "Meniu";
+            // 
             // Client_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1844, 953);
-            this.Controls.Add(this.btnCOMANDA);
+            this.ClientSize = new System.Drawing.Size(1844, 994);
+            this.Controls.Add(this.grMeniu);
+            this.Controls.Add(this.grRezervareClient);
             this.Controls.Add(this.lblModificareMeniu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -477,20 +501,6 @@ namespace Restaurant_WindowsForms
             this.Controls.Add(this.txtTip);
             this.Controls.Add(this.lblDENUMIRE);
             this.Controls.Add(this.lblTIP);
-            this.Controls.Add(this.lstMeniu);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnAfiseazaMeniu);
-            this.Controls.Add(this.lblInfoRezervare);
-            this.Controls.Add(this.lblEroareCNP);
-            this.Controls.Add(this.lblEroarePrenume);
-            this.Controls.Add(this.lblEroareNume);
-            this.Controls.Add(this.btnREZERVA);
-            this.Controls.Add(this.txtCNP);
-            this.Controls.Add(this.lblCNP);
-            this.Controls.Add(this.txtPRENUME);
-            this.Controls.Add(this.txtNUME);
-            this.Controls.Add(this.lblPRENUME);
-            this.Controls.Add(this.lblNUME);
             this.Controls.Add(this.grMese);
             this.Controls.Add(this.grLocatie);
             this.Controls.Add(this.txtNumeRestaurant);
@@ -502,6 +512,9 @@ namespace Restaurant_WindowsForms
             this.grLocatie.ResumeLayout(false);
             this.grLocatie.PerformLayout();
             this.grMese.ResumeLayout(false);
+            this.grRezervareClient.ResumeLayout(false);
+            this.grRezervareClient.PerformLayout();
+            this.grMeniu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,9 +542,7 @@ namespace Restaurant_WindowsForms
         private System.Windows.Forms.Label lblEroareNume;
         private System.Windows.Forms.Label lblEroarePrenume;
         private System.Windows.Forms.Label lblEroareCNP;
-        private System.Windows.Forms.Label lblInfoRezervare;
         private System.Windows.Forms.Button btnAfiseazaMeniu;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstMeniu;
         private System.Windows.Forms.Label lblModificareMeniu;
         private System.Windows.Forms.Label label3;
@@ -545,6 +556,8 @@ namespace Restaurant_WindowsForms
         private System.Windows.Forms.Label lblDENUMIRE;
         private System.Windows.Forms.Label lblTIP;
         private System.Windows.Forms.Button btnCOMANDA;
+        private System.Windows.Forms.GroupBox grRezervareClient;
+        private System.Windows.Forms.GroupBox grMeniu;
     }
 }
 

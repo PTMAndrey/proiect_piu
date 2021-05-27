@@ -33,21 +33,19 @@ namespace Restaurant_WindowsForms
             rdbTERASA.Checked = false;
             grMese.Visible = false;
 
-            lblNUME.Visible = false;
+            /*lblNUME.Visible = false;
             txtNUME.Visible = false;
             lblPRENUME.Visible = false;
             txtPRENUME.Visible = false;
             lblCNP.Visible = false;
             txtCNP.Visible = false;
-            btnREZERVA.Visible = false;
+            btnREZERVA.Visible = false;*/
+            grRezervareClient.Visible = false;
 
-            lblInfoRezervare.Visible = false;
-
-            /*lbllocuri1.Visible = false;
-            lbllocuri2.Visible = false;
-            lbllocuri3.Visible = false;
-            lbllocuri4.Visible = false;*/
-
+            grMeniu.Visible = false;
+            
+            
+            //lblInfoRezervare.Visible = false;
         }
 
 
@@ -60,14 +58,15 @@ namespace Restaurant_WindowsForms
              * Daca este selectata locatia separeu folosesc de la pozitia 4 la 7 [ index_locatie_in_lista = 4 ]
              * Daca este selectata locatia terasa folosesc de la 8 la 11 [ index_locatie_in_lista = 8 ]
              */
-            lblNUME.Visible = false;
+            /*lblNUME.Visible = false;
             txtNUME.Visible = false;
             lblPRENUME.Visible = false;
             txtPRENUME.Visible = false;
             lblCNP.Visible = false;
             txtCNP.Visible = false;
             btnREZERVA.Visible = false;
-            lblInfoRezervare.Visible = false;
+            lblInfoRezervare.Visible = false;*/
+            grRezervareClient.Visible = false;
 
 
             if (rdbINTERIOR.Checked)
@@ -129,7 +128,7 @@ namespace Restaurant_WindowsForms
         private void btnMasa_Selectat_Click(object sender, EventArgs e)
         {
             reset_controale_client();
-            lblNUME.Visible = true;
+            /*lblNUME.Visible = true;
             txtNUME.Visible = true;
 
             lblPRENUME.Visible = true;
@@ -138,7 +137,7 @@ namespace Restaurant_WindowsForms
             lblCNP.Visible = true;
             txtCNP.Visible = true;
 
-            btnREZERVA.Visible = true;
+            btnREZERVA.Visible = true;*/
 
             Button btnMasa_Click = sender as Button;
             if (btnMasa_Click == null)
@@ -146,9 +145,10 @@ namespace Restaurant_WindowsForms
 
             index_rezervare += btnMasa_Click.TabIndex+1;
 
-            lblInfoRezervare.Text = "Rezervare la masa " + btnMasa_Click.TabIndex.ToString();
 
-            lblInfoRezervare.Visible = true;
+            grRezervareClient.Text = "Rezervare la masa " + btnMasa_Click.TabIndex.ToString();
+
+            grRezervareClient.Visible = true;
         }
 
         private void btnREZERVA_Click(object sender, EventArgs e) // BUTON DE ADAUGARE CLIENT IN FISIER
@@ -186,11 +186,12 @@ namespace Restaurant_WindowsForms
             IStocareMasa stocare_info_masa = new Administrare_masa();
             List<Masa> l_mese = stocare_info_masa.GetInfo();
 
-
+            int cod_unic = 0;
             for (int i = 0; i < l_mese.Count; i++)
                 if (l_mese[i].id == index_rezervare)
                 {
                     stocare_info_masa.UpdateMasa(index_rezervare);
+                    cod_unic = l_mese[i].cod_unic;
                     break;
                 }
             stocare_info_masa.GetInfo();
@@ -198,6 +199,19 @@ namespace Restaurant_WindowsForms
             Afisare_Mese(index_rezervare-1);
 
             reset_controale_client();
+
+            DialogResult raspuns;
+
+            raspuns = MessageBox.Show($"Codul mesei este: [ {cod_unic} ]", "COD UNIC",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
+
+            if (raspuns == System.Windows.Forms.DialogResult.Cancel)
+            {
+                MessageBox.Show($"Este necesara cunoasterea codului unic al mesei pentru a putea efectua comenzi in cazul in care ati rezervat mai multe mese.\n\nCodul este: [ {cod_unic} ]", "ATENTIE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+                grMeniu.Visible = true;
+
+
         }
 
         private void txtNUME_TextChanged(object sender, EventArgs e)
@@ -372,8 +386,6 @@ namespace Restaurant_WindowsForms
             lblNUME.ForeColor = lblPRENUME.ForeColor = lblCNP.ForeColor = Color.Black;
             txtNUME.Text = txtPRENUME.Text = txtCNP.Text = string.Empty;
 
-            lblInfoRezervare.Visible = false;
-
             lblEroareNume.Text = "*";
             lblEroareNume.ForeColor = Color.Transparent;
 
@@ -390,6 +402,7 @@ namespace Restaurant_WindowsForms
             txtTip.Text = txtDenumire.Text = txtPret.Text = string.Empty;
 
         }
-        
+
+
     }
 }
