@@ -65,7 +65,7 @@ namespace Restaurant_WindowsForms
             this.txtTip = new System.Windows.Forms.TextBox();
             this.lblDENUMIRE = new System.Windows.Forms.Label();
             this.lblTIP = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCOMANDA = new System.Windows.Forms.Button();
             this.grLocatie.SuspendLayout();
             this.grMese.SuspendLayout();
             this.SuspendLayout();
@@ -146,7 +146,7 @@ namespace Restaurant_WindowsForms
             this.btnMasa1.TabIndex = 1;
             this.btnMasa1.Text = "Masa 1";
             this.btnMasa1.UseVisualStyleBackColor = false;
-            this.btnMasa1.Click += new System.EventHandler(this.Rezerva_Click);
+            this.btnMasa1.Click += new System.EventHandler(this.btnMasa_Selectat_Click);
             // 
             // btnMasa2
             // 
@@ -160,7 +160,7 @@ namespace Restaurant_WindowsForms
             this.btnMasa2.TabIndex = 2;
             this.btnMasa2.Text = "Masa 2";
             this.btnMasa2.UseVisualStyleBackColor = false;
-            this.btnMasa2.Click += new System.EventHandler(this.Rezerva_Click);
+            this.btnMasa2.Click += new System.EventHandler(this.btnMasa_Selectat_Click);
             // 
             // btnMasa3
             // 
@@ -174,7 +174,7 @@ namespace Restaurant_WindowsForms
             this.btnMasa3.TabIndex = 3;
             this.btnMasa3.Text = "Masa 3";
             this.btnMasa3.UseVisualStyleBackColor = false;
-            this.btnMasa3.Click += new System.EventHandler(this.Rezerva_Click);
+            this.btnMasa3.Click += new System.EventHandler(this.btnMasa_Selectat_Click);
             // 
             // btnMasa4
             // 
@@ -188,7 +188,7 @@ namespace Restaurant_WindowsForms
             this.btnMasa4.TabIndex = 4;
             this.btnMasa4.Text = "Masa 4";
             this.btnMasa4.UseVisualStyleBackColor = false;
-            this.btnMasa4.Click += new System.EventHandler(this.Rezerva_Click);
+            this.btnMasa4.Click += new System.EventHandler(this.btnMasa_Selectat_Click);
             // 
             // grMese
             // 
@@ -449,23 +449,23 @@ namespace Restaurant_WindowsForms
             this.lblTIP.TabIndex = 25;
             this.lblTIP.Text = "TIP";
             // 
-            // button1
+            // btnCOMANDA
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Hobo Std", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(1157, 662);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 39);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "COMANDA";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCOMANDA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCOMANDA.Font = new System.Drawing.Font("Hobo Std", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCOMANDA.Location = new System.Drawing.Point(1157, 662);
+            this.btnCOMANDA.Name = "btnCOMANDA";
+            this.btnCOMANDA.Size = new System.Drawing.Size(134, 39);
+            this.btnCOMANDA.TabIndex = 36;
+            this.btnCOMANDA.Text = "COMANDA";
+            this.btnCOMANDA.Click += new System.EventHandler(this.btnCOMANDA_Click);
             // 
             // Client_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1844, 953);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCOMANDA);
             this.Controls.Add(this.lblModificareMeniu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -544,7 +544,7 @@ namespace Restaurant_WindowsForms
         private System.Windows.Forms.TextBox txtTip;
         private System.Windows.Forms.Label lblDENUMIRE;
         private System.Windows.Forms.Label lblTIP;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCOMANDA;
     }
 }
 

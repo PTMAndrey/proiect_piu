@@ -69,19 +69,17 @@ namespace Restaurant_WindowsForms
             btnREZERVA.Visible = false;
             lblInfoRezervare.Visible = false;
 
-            IStocareMasa stocare_info_masa = new Administrare_masa();
-            List<Masa> l_mese = stocare_info_masa.GetInfo();
 
             if (rdbINTERIOR.Checked)
             {
                 rdbSEPAREU.Checked = false;
                 rdbTERASA.Checked = false;
-                index_rezervare = 0;
+                index_rezervare = -1;
             }
             else
             if (rdbSEPAREU.Checked)
             {
-                index_rezervare = 4;
+                index_rezervare = 3;
 
                 rdbINTERIOR.Checked = false;
                 rdbTERASA.Checked = false;
@@ -89,15 +87,29 @@ namespace Restaurant_WindowsForms
             else
             if (rdbTERASA.Checked)
             {
-                index_rezervare = 8;
+                index_rezervare = 7;
 
                 rdbSEPAREU.Checked = false;
                 rdbINTERIOR.Checked = false;
             }
 
+            Afisare_Mese(index_rezervare+1);
+
+
+            //index_rezervare = index_rezervare - 4;
+            reset_controale_client();
+            grMese.Visible = true;
+
+        }
+
+        public void Afisare_Mese(int index)
+        {
+            IStocareMasa stocare_info_masa = new Administrare_masa();
+            List<Masa> l_mese = stocare_info_masa.GetInfo();
+
             foreach (Button btn in grMese.Controls.Cast<Control>().Reverse())
             {
-                if (l_mese[index_rezervare].ocupat == true)
+                if (l_mese[index].ocupat == true)
                 {
                     btn.BackColor = Color.Gray;
                     btn.Enabled = false;
@@ -108,37 +120,32 @@ namespace Restaurant_WindowsForms
                     btn.BackColor = Color.Lime;
                     btn.Enabled = true;
                     btn.Cursor = Cursors.Hand;
-                    btn.Text = "Masa " + btn.TabIndex + "\n" + l_mese[index_rezervare].locuri.ToString() + " locuri";
+                    btn.Text = "Masa " + btn.TabIndex + "\n" + l_mese[index].locuri.ToString() + " locuri";
                 }
 
-                index_rezervare++;
+                index++;
             }
-
-
-            index_rezervare = index_rezervare - 4;
-            reset_controale_client();
-            grMese.Visible = true;
-
         }
-
-        private void Rezerva_Click(object sender, EventArgs e)
+        private void btnMasa_Selectat_Click(object sender, EventArgs e)
         {
             reset_controale_client();
             lblNUME.Visible = true;
             txtNUME.Visible = true;
+
             lblPRENUME.Visible = true;
             txtPRENUME.Visible = true;
+
             lblCNP.Visible = true;
             txtCNP.Visible = true;
-            btnREZERVA.Visible = true;
 
+            btnREZERVA.Visible = true;
 
             Button btnMasa_Click = sender as Button;
             if (btnMasa_Click == null)
                 return;
 
-            index_rezervare = index_rezervare + btnMasa_Click.TabIndex;
-
+            index_rezervare += btnMasa_Click.TabIndex+1;
+            MessageBox.Show(index_rezervare.ToString());
             lblInfoRezervare.Text = "Rezervare la masa " + btnMasa_Click.TabIndex.ToString();
 
             lblInfoRezervare.Visible = true;
@@ -179,14 +186,20 @@ namespace Restaurant_WindowsForms
             IStocareMasa stocare_info_masa = new Administrare_masa();
             List<Masa> l_mese = stocare_info_masa.GetInfo();
 
+            MessageBox.Show(index_rezervare.ToString() + "index2");
+
             for (int i = 0; i < l_mese.Count; i++)
                 if (l_mese[i].id == index_rezervare)
                 {
+
+                    MessageBox.Show(index_rezervare.ToString() + "index3");
+
                     stocare_info_masa.UpdateMasa(index_rezervare);
                     break;
                 }
             stocare_info_masa.GetInfo();
 
+            Afisare_Mese(index_rezervare-1);
 
             reset_controale_client();
         }
@@ -227,7 +240,7 @@ namespace Restaurant_WindowsForms
 
         private void txtCNP_TextChanged(object sender, EventArgs e)
         {
-            if (txtCNP.Text.Length != CIFRE_CNP)
+            if (txtCNP.Text.Length > CIFRE_CNP)
             {
                 lblEroareCNP.Text = "MAXIM " + CIFRE_CNP + " CARACTERE";
                 lblEroareCNP.ForeColor = Color.Green;
@@ -262,6 +275,22 @@ namespace Restaurant_WindowsForms
 
 
 
+
+
+
+
+
+
+
+
+
+
+        private void btnCOMANDA_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void btnAfiseazaMeniu_Click(object sender, EventArgs e)
         {
             lstMeniu.Items.Clear();
@@ -290,7 +319,7 @@ namespace Restaurant_WindowsForms
                 txtTip.Text = camp_selectat.tip_aliment.ToString();
                 txtDenumire.Text = camp_selectat.denumire;
                 txtPret.Text = camp_selectat.pret.ToString();
-            }
+            } 
 
         }
 
@@ -322,6 +351,7 @@ namespace Restaurant_WindowsForms
             reset_controale_meniu();
             btnAfiseazaMeniu_Click(sender, e);
         }
+
 
 
 
@@ -364,6 +394,6 @@ namespace Restaurant_WindowsForms
             txtTip.Text = txtDenumire.Text = txtPret.Text = string.Empty;
 
         }
-
+        
     }
 }
