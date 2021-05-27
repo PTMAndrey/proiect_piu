@@ -145,7 +145,7 @@ namespace Restaurant_WindowsForms
                 return;
 
             index_rezervare += btnMasa_Click.TabIndex+1;
-            MessageBox.Show(index_rezervare.ToString());
+
             lblInfoRezervare.Text = "Rezervare la masa " + btnMasa_Click.TabIndex.ToString();
 
             lblInfoRezervare.Visible = true;
@@ -186,14 +186,10 @@ namespace Restaurant_WindowsForms
             IStocareMasa stocare_info_masa = new Administrare_masa();
             List<Masa> l_mese = stocare_info_masa.GetInfo();
 
-            MessageBox.Show(index_rezervare.ToString() + "index2");
 
             for (int i = 0; i < l_mese.Count; i++)
                 if (l_mese[i].id == index_rezervare)
                 {
-
-                    MessageBox.Show(index_rezervare.ToString() + "index3");
-
                     stocare_info_masa.UpdateMasa(index_rezervare);
                     break;
                 }
