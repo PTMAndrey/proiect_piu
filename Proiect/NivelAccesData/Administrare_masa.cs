@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,9 @@ namespace NivelAccesData
             //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
 
-        public ArrayList GetInfo()
+        public List<Masa> GetInfo()
         {
-            ArrayList _masa = new ArrayList();
+            List<Masa> _masa = new List<Masa>();
 
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
@@ -40,7 +41,7 @@ namespace NivelAccesData
 
             return _masa;
         }
-        public Masa CautaMasa(string id_masa)
+        public Masa Cauta(string locatie) // caut masa din locatia selectata in groupbox-ul cu butoane radio si o returnez daca exista
         {
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
@@ -50,7 +51,7 @@ namespace NivelAccesData
                 while ((line = sr.ReadLine()) != null)
                 {
                     Masa masaDinFisier = new Masa(line);
-                    if ((masaDinFisier.id).ToString() == id_masa)
+                    if (masaDinFisier.locatie == locatie )
                     {
                         return masaDinFisier;
                     }
@@ -60,10 +61,10 @@ namespace NivelAccesData
             return null;
         }
 
-        public bool UpdateMasa(string _id, string _locuri, bool ocupat = false)
+        public bool UpdateMasa(int _id)
         {
             bool verificare = false;
-            ArrayList _masa = new ArrayList();
+            List<Masa> _masa = new List<Masa>();
 
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
@@ -73,8 +74,8 @@ namespace NivelAccesData
                 while ((line = sr.ReadLine()) != null)
                 {
                     Masa masaDinFisier = new Masa(line);
-                    if (masaDinFisier.id == Convert.ToInt32(_id))
-                    { masaDinFisier.locuri = Convert.ToInt32(_locuri); masaDinFisier.ocupat = ocupat; verificare = true; }
+                    if (masaDinFisier.id == _id)
+                    { masaDinFisier.ocupat = true; verificare = true; }
 
                     _masa.Add(masaDinFisier);
                 }
@@ -85,17 +86,18 @@ namespace NivelAccesData
                 IStocareMasa stocare_info_masa = new Administrare_masa();
                 for (int i = 0; i < _masa.Count; i++)
                 {
-                    stocare_info_masa.AddMasa((Masa)_masa[i]);
+                    stocare_info_masa.AddMasa(_masa[i]);
                 }
                 return true;
             }
             else
                 return false;
         }
-        public void AddMasa(Masa b)
+
+        public int Generare_Cod_Unic(Masa b)
         {
             /*Citesc din fisier codurile unice, apoi verific daca codul unic generat cand s-a introdus masa la consola este egal cu vreun cod deja existent. Daca da, generez pana cand cele doua nu sunt egale*/
-            ArrayList _masa = new ArrayList();
+            List<Masa> _masa = new List<Masa>();
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
                 string line;
@@ -108,8 +110,12 @@ namespace NivelAccesData
                         b.cod_unic = b.GenerareCodUnic();
                 }
             }
+            return b.cod_unic;
+        }
 
-
+        public void AddMasa(Masa b)
+        {
+            b.cod_unic = Generare_Cod_Unic(b);
 
             //instructiunea 'using' va apela la final swFisierText.Close();
             //al doilea parametru setat la 'true' al constructorului StreamWriter indica modul 'append' de deschidere al fisierului
@@ -120,7 +126,7 @@ namespace NivelAccesData
         }
         public string GetInfoMasaPentruClient(int ID) /*afiseaza detalii masa pe care a rezervat-o clientul*/
         {
-            ArrayList _masa = new ArrayList();
+            List<Masa> _masa = new List<Masa>();
             string s;
             using (StreamReader sr = new StreamReader(NumeFisier))
             {

@@ -155,9 +155,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect.csproj",
-      "projectName": "Proiect",
-      "projectPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect.csproj",
+      "projectUniqueName": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect_cONSOLA.csproj",
+      "projectName": "Proiect_cONSOLA",
+      "projectPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect_cONSOLA.csproj",
       "packagesPath": "C:\\Users\\dorin\\.nuget\\packages\\",
       "outputPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\obj\\",
       "projectStyle": "PackageReference",

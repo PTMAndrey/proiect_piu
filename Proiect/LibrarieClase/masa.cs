@@ -13,7 +13,7 @@ namespace LibrarieClase
         public bool ocupat { get; set; } = false;
         public int cod_unic { get; set; } = 0; // va fi generat random
         public float total_plata { get; set; } = 0;
-        public string locatie_masa { get; set; }
+        public string locatie { get; set; }
 
         // urmeaza functii
 
@@ -24,7 +24,7 @@ namespace LibrarieClase
             locuri = cod_unic = 0;
             ocupat = false;
             total_plata = 0;
-            locatie_masa = string.Empty;
+            locatie = string.Empty;
         }
         public Masa(string informatii_masa, bool citit_din_consola = false)
         {
@@ -55,7 +55,7 @@ namespace LibrarieClase
                         total_plata = 0;
                     else
                         total_plata = float.Parse(info_masa[4], CultureInfo.InvariantCulture.NumberFormat);
-                    locatie_masa = info_masa[5];
+                    locatie = info_masa[5];
                 }
                 else // am citit de la consola
                 {
@@ -66,7 +66,7 @@ namespace LibrarieClase
                     id = last_id;
                     ocupat = false; /*Daca se introduce manual o masa atunci codul va fi generat automat*/
                     total_plata = 0;
-                    locatie_masa = info_masa[1];
+                    locatie = info_masa[1];
                 }
 
 
@@ -96,14 +96,14 @@ namespace LibrarieClase
                 if (ocupat == false)
                 {
                     //return $"\tMasa cu   ID [ {id} ]   se afla in    [ {locatie_masa}\t]\tsi are [ {locuri} ] locuri disponibile.";
-                    return $"\t\t[ {id} ] \t\t [ {locatie_masa} ] \t\t [ {locuri} ]";
+                    return $"\t\t[ {id} ] \t\t [ {locatie} ] \t\t [ {locuri} ]";
                 }
                 /*else
                     s = $"\t[ OCUPAT ] Masa [ {id} ] nu este disponibila.";*/
             }
             else // afisez informatii pentru cazul in care un client vrea sa rezerve si e nevoie de afisare mese libere
             {
-                return $"\t Masa cu ID [ {id_pentru_afisare_info_client} ] se afla in [ {locatie_masa} ] si are [ {locuri} ] cu total de plata [ {total_plata} ].";
+                return $"\t Masa cu ID [ {id_pentru_afisare_info_client} ] se afla in [ {locatie} ] si are [ {locuri} ] cu total de plata [ {total_plata} ].";
             }
             
             return null;
@@ -112,7 +112,7 @@ namespace LibrarieClase
         public string ConversieLaSir_PentruScriereInFisier()
         {
             string s = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}",
-                SEPARATOR_PRINCIPAL_FISIER, id.ToString(), locuri.ToString(), ocupat.ToString(), cod_unic.ToString(), total_plata.ToString(), ( locatie_masa ?? "NEDEFINIT") );
+                SEPARATOR_PRINCIPAL_FISIER, id.ToString(), locuri.ToString(), ocupat.ToString(), cod_unic.ToString(), total_plata.ToString(), ( locatie ?? "NEDEFINIT") );
 
             return s;
         }

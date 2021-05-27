@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Restaurant_WindowsForms/1.0.0": {
+        "dependencies": {
+          "LibrarieClase": "1.0.0",
+          "NivelAccesData": "1.0.0"
+        },
+        "runtime": {
+          "Restaurant_WindowsForms.dll": {}
+        }
+      },
+      "LibrarieClase/1.0.0": {
+        "runtime": {
+          "LibrarieClase.dll": {}
+        }
+      },
+      "NivelAccesData/1.0.0": {
+        "dependencies": {
+          "LibrarieClase": "1.0.0"
+        },
+        "runtime": {
+          "NivelAccesData.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Restaurant_WindowsForms/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LibrarieClase/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NivelAccesData/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

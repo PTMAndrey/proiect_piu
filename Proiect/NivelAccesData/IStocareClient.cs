@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using LibrarieClase;
 
 namespace NivelAccesData
@@ -7,7 +7,7 @@ namespace NivelAccesData
     //definitia interfetei
     public interface IStocareClient
     {
-        ArrayList GetInfo();
+        List<Client> GetInfo();
         Client CautaClient(string cnp);
         void AddClient(Client b);
     }
