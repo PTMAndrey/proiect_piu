@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +22,9 @@ namespace NivelAccesData
             //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
 
-        public ArrayList GetInfo()
+        public List<Client> GetInfo()
         {
-            ArrayList _client = new ArrayList();
+            List<Client> _client = new List<Client>();
 
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
@@ -42,9 +42,6 @@ namespace NivelAccesData
         }
         public Client CautaClient(string cnp) // cauta client
         {
-            ArrayList _client = new ArrayList();
-
-
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
                 string line;

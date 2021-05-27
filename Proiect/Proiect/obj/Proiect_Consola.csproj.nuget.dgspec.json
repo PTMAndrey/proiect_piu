@@ -1,0 +1,203 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect_Consola.csproj": {}
+  },
+  "projects": {
+    "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\LibrarieClase\\LibrarieClase.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\LibrarieClase\\LibrarieClase.csproj",
+        "projectName": "LibrarieClase",
+        "projectPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\LibrarieClase\\LibrarieClase.csproj",
+        "packagesPath": "C:\\Users\\dorin\\.nuget\\packages\\",
+        "outputPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\LibrarieClase\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\dorin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\NivelAccesData\\NivelAccesData.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\NivelAccesData\\NivelAccesData.csproj",
+        "projectName": "NivelAccesData",
+        "projectPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\NivelAccesData\\NivelAccesData.csproj",
+        "packagesPath": "C:\\Users\\dorin\\.nuget\\packages\\",
+        "outputPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\NivelAccesData\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\dorin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\LibrarieClase\\LibrarieClase.csproj": {
+                "projectPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\LibrarieClase\\LibrarieClase.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect_Consola.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect_Consola.csproj",
+        "projectName": "Proiect_Consola",
+        "projectPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\Proiect_Consola.csproj",
+        "packagesPath": "C:\\Users\\dorin\\.nuget\\packages\\",
+        "outputPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\Proiect\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\dorin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\LibrarieClase\\LibrarieClase.csproj": {
+                "projectPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\LibrarieClase\\LibrarieClase.csproj"
+              },
+              "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\NivelAccesData\\NivelAccesData.csproj": {
+                "projectPath": "D:\\An 2\\SEM 2\\Eu 2021\\PIU\\Laborator\\REPOSITORY\\proiect_piu\\Proiect\\NivelAccesData\\NivelAccesData.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using LibrarieClase;
 
 namespace NivelAccesData
@@ -7,8 +7,9 @@ namespace NivelAccesData
     //definitia interfetei
     public interface IStocareMeniu
     {
-        ArrayList GetInfo();
-        Meniu GetInfo(string denumire);
+        List<Meniu> GetInfo();
+        Meniu GetInfo(int id);
         void Add(Meniu b);
+        public bool UpdateMeniu(Meniu m);
     }
 }

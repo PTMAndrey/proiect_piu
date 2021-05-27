@@ -1,0 +1,18 @@
+1;Pizza Capriciosa;19,5;Mancare
+2;Pizza Diavola;15;Mancare
+3;Pizza La Cumatru';21;Mancare
+4;Ciorba de legume;7,5;Mancare
+5;Ciorba de cartofi;7,5;Mancare
+6;Ciorba de sfecla;8;Mancare
+7;Cartofi prajiti;3,5;Mancare
+8;Cartofi fierti;5,5;Mancare
+9;Cartofi widges;7;Mancare
+10;Coca Cola;4,5;Bautura
+11;Pepsi;4,5;Bautura
+12;Sprite;4,5;Bautura
+13;Absolut;18,5;Bautura
+14;Jack Daniel's;22;Bautura
+15;Gin;20;Bautura
+16;Martini;17;Bautura
+17;Clatite cu dulceata;10;Desert
+18;Papanasi;10;Desert

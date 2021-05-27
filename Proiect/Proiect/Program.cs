@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using NivelAccesData;
 using LibrarieClase;
 
@@ -9,9 +10,9 @@ namespace Proiect
     {
         static void Main(string[] args)
         {
-            ArrayList array_client;
-            ArrayList array_masa;
-            ArrayList array_meniu;
+            List<Client> list_client;
+            List<Masa> list_masa;
+            List<Meniu> list_meniu;
 
             IStocareClient stocare_info_client;
             IStocareMasa stocare_info_masa;
@@ -26,9 +27,9 @@ namespace Proiect
                 stocare_info_masa = new Administrare_masa();
                 stocare_info_meniu = new Administrare_meniu();
 
-                array_client = stocare_info_client.GetInfo();
-                array_masa = stocare_info_masa.GetInfo();
-                array_meniu = stocare_info_meniu.GetInfo();
+                list_client = stocare_info_client.GetInfo();
+                list_masa = stocare_info_masa.GetInfo();
+                list_meniu = stocare_info_meniu.GetInfo();
 
                 Console.Clear();
                 Console.WriteLine("A. Afisare mese disponibile");
@@ -39,9 +40,11 @@ namespace Proiect
                 Console.WriteLine("E. Adauga in meniu");
                 Console.WriteLine("F. Cauta aliment\n");
 
-                Console.WriteLine("G. Inregistrare client");
+                Console.WriteLine("G. Rezervare masa");
                 Console.WriteLine("H. Afisare clienti");
                 Console.WriteLine("I. Cauta client\n");
+
+                Console.WriteLine("J. Comanda din meniu");
 
                 Console.WriteLine("X. Parasire restaurant");
                 Console.Write("\nAlegeti o optiune: ");
@@ -50,19 +53,19 @@ namespace Proiect
                 {
                     case "A":
                         {
-                            if (array_masa.Count == 0)
+                            if (list_masa.Count == 0)
                                 Console.WriteLine("Nu exista inregistrari valide!");
                             else
-                                AfisareMese(array_masa);
+                                AfisareMese(list_masa);
                             break;
                         }
                    
                     case "B":
                         {
-                            string id, locuri;
+                            /*string id, locuri;
                             Console.WriteLine("ID-ul mesei este: ");
                             id = Console.ReadLine();
-                            if (array_masa.Count < Convert.ToInt32(id))
+                            if (list_masa.Count < Convert.ToInt32(id))
                                 Console.WriteLine("Masa nu a putut fi actualizata deoarece id-ul introdus nu este atribuit la nici o masa");
                             else
                             {
@@ -73,17 +76,17 @@ namespace Proiect
                                 confirmare = stocare_info_masa.UpdateMasa(id, locuri);
                                 if (confirmare)
                                 {
-                                    array_masa = stocare_info_masa.GetInfo();
-                                    AfisareMese(array_masa);
+                                    list_masa = stocare_info_masa.GetInfo();
+                                    AfisareMese(list_masa);
                                 }
-                            }
+                            }*/
                             break;
                         }
 
                     case "C":
                         {
                             Masa addmasa = AddMasa_Citire_Consola();
-                            array_masa.Add(addmasa);
+                            list_masa.Add(addmasa);
                             stocare_info_masa.AddMasa(addmasa);
                             Console.WriteLine("Masa a fost adaugata cu succes!");
 
@@ -92,17 +95,17 @@ namespace Proiect
 
                     case "D":
                         {
-                            if (array_meniu.Count == 0)
+                            if (list_meniu.Count == 0)
                                 Console.WriteLine("Nu exista inregistrari valide!");
                             else
-                                AfisareMeniu(array_meniu);
+                                AfisareMeniu(list_meniu);
                             break;
                         }
 
                     case "E":
                         {
                             Meniu adauga_in_meniu = AddMeniu();
-                            array_meniu.Add(adauga_in_meniu);
+                            list_meniu.Add(adauga_in_meniu);
                             stocare_info_meniu.Add(adauga_in_meniu);
                             Console.WriteLine("Produsul a fost adaugat cu succes!");
                             break;
@@ -116,8 +119,8 @@ namespace Proiect
 
                     case "G":
                         {
-                            Client addclient = AddClient_Citire_Consola(array_client.Count, array_masa);
-                            array_client.Add(addclient);
+                            Client addclient = Rezervare(list_client.Count, list_masa);
+                            list_client.Add(addclient);
                             stocare_info_client.AddClient(addclient);
                             Console.WriteLine("Clientul a fost inregistrat!");
                             break;
@@ -125,23 +128,25 @@ namespace Proiect
 
                     case "H":
                         {
-                            if (array_client.Count == 0)
+                            if (list_client.Count == 0)
                                 Console.WriteLine("Nu exista clienti in restaurant!");
                             else
-                                AfisareClienti(array_client, array_masa);
+                                AfisareClienti(list_client, list_masa);
                             break;
                         }
                     case "I":
                         {
-                            string cnp;
-                            Console.WriteLine("CNP-ul persoanei cautate: ");
-                            cnp = Console.ReadLine();
-                            Client cautare;
-                            cautare = stocare_info_client.CautaClient(cnp);
-                            if (cautare != null)
-                                Console.Write($"\t[ {cautare.id} ]. Clientul [ {cautare.Nume} {cautare.Prenume} ] se afla la masa [ {cautare.ID_Masa} ]\n");
-                            else
-                                Console.WriteLine("Clientul cautat nu exista!");
+                            CautaClient(stocare_info_client);
+                            break;
+                        }
+
+                    case "J":
+                        {
+                            if (list_client.Count == 0)
+                                Console.WriteLine("Nu aveti vreo masa rezervata! Rezervati prima data o masa!");
+                            
+
+
                             break;
                         }
 
@@ -161,7 +166,7 @@ namespace Proiect
 
         }
 
-        public static Client AddClient_Citire_Consola(int client_Count, ArrayList array_masa)
+        public static Client Rezervare(int client_Count, List<Masa> list_masa)
         {
             Client cl = new Client();
             string nume, prenume, cnp;
@@ -193,7 +198,7 @@ namespace Proiect
             } while (ok == 1);
 
 
-            AfisareMese(array_masa);
+            AfisareMese(list_masa);
             int id = 0;
             bool _catch;
             do
@@ -213,7 +218,7 @@ namespace Proiect
                 }
                 if (_catch == false) // nu e eroare de format la citire
                 {
-                    if (id < 0 || id > array_masa.Count)
+                    if (id < 0 || id > list_masa.Count)
                     {
                         _catch = true;
                         Console.WriteLine("Ati introdus gresit informatia! Incercati din nou!\n");
@@ -242,33 +247,46 @@ namespace Proiect
         public static bool Verificare_Status(int id)
         {
 
-            IStocareMasa stocare_info_masa = new Administrare_masa();
+            /*StocareMasa stocare_info_masa = new Administrare_masa();
             Masa m;//= new Masa();
-            m = stocare_info_masa.CautaMasa(id.ToString());
+            m = stocare_info_masa.Cauta(id.ToString());
             if (m != null) // inseamna ca masa selectata exista in fisier
             {
                 if (m.ocupat == false)
                     if (stocare_info_masa.UpdateMasa(id.ToString(), (m.locuri).ToString(), true) == true)
                         return true;
-            }
+            }*/
 
             return false;
         }
 
-        public static void AfisareClienti(ArrayList clienti, ArrayList mese)
+        public static void AfisareClienti(List<Client> clienti, List<Masa> mese)
         {
             Console.WriteLine("Clientii din restaurant sunt:");
             for (int i = 0; i < clienti.Count; i++)
             {
                 for (int k = 0; k < mese.Count; k++)
                 {
-                    if ( ( (Client)clienti[i] ).ID_Masa == ( (Masa)mese[k] ).id )
+                    if ( clienti[i].ID_Masa == mese[k].id )
                     {
-                        Console.WriteLine( ( (Client)clienti[i] ).ConversieLaSir_PentruAfisare( (Masa)mese[k] ) + "\n");
+                        Console.WriteLine( clienti[i].ConversieLaSir_PentruAfisare(mese[k]) + "\n");
                         break;
                     }   
                 }
             }
+        }
+
+        public static void CautaClient(IStocareClient stocare_info_client)
+        {
+            string cnp;
+            Console.WriteLine("CNP-ul persoanei cautate: ");
+            cnp = Console.ReadLine();
+            Client cautare;
+            cautare = stocare_info_client.CautaClient(cnp);
+            if (cautare != null)
+                Console.Write($"\t[ {cautare.id} ]. Clientul [ {cautare.Nume} {cautare.Prenume} ] se afla la masa [ {cautare.ID_Masa} ]\n");
+            else
+                Console.WriteLine("Clientul cautat nu exista!");
         }
 
         public static Masa AddMasa_Citire_Consola()
@@ -320,14 +338,14 @@ namespace Proiect
             return m;
         }
 
-        public static void AfisareMese(ArrayList mese)
+        public static void AfisareMese(List<Masa> mese)
         {
             Console.WriteLine("\tMesele libere din restaurant\n");
             Console.WriteLine("\t\t ID \t\t  Locatie \t\t Locuri");
             for (int i = 0; i < mese.Count; i++)
             {
-                if (((Masa)mese[i]).ConversieLaSir_PentruAfisare() != null)
-                    Console.WriteLine(((Masa)mese[i]).ConversieLaSir_PentruAfisare());
+                if (mese[i].ConversieLaSir_PentruAfisare() != null)
+                    Console.WriteLine(mese[i].ConversieLaSir_PentruAfisare());
             }
         }
         /*
@@ -354,7 +372,7 @@ namespace Proiect
             return m;
         }
 
-        public static void AfisareMancare(ArrayList mancare)
+        public static void AfisareMancare(List<> mancare)
         {
             Console.WriteLine("Bauturile din meniu sunt:");
             for (int i = 0; i < mancare.Count; i++)
@@ -420,18 +438,18 @@ namespace Proiect
             return meniu;
         }
 
-        public static void AfisareMeniu(ArrayList meniu)
+        public static void AfisareMeniu(List<Meniu> meniu)
         {
             Console.WriteLine("\t\t[  Meniu  ]\n");
             Console.WriteLine("\t ID \t   PRET \t\t NUME");
             for (int i = 0; i < meniu.Count; i++)
             {
-                Console.WriteLine(((Meniu)meniu[i]).ConversieLaSir_PentruAfisare());
+                Console.WriteLine(meniu[i].ConversieLaSir_PentruAfisare());
             }
         }
 
         public static void CautaAliment(IStocareMeniu stocare_info_meniu)
-        {
+        {/*
             string denumire;
             Console.WriteLine("Numele alimentului pe care doriti sa il cautati:");
             denumire = Console.ReadLine();
@@ -440,7 +458,7 @@ namespace Proiect
             if (cautare != null)
                 Console.WriteLine(cautare.ConversieLaSir_PentruAfisare());
             else
-                Console.WriteLine("Ne cerem scuze, dar optiunea cautata nu face parte din meniul nostru!");
+                Console.WriteLine("Ne cerem scuze, dar optiunea cautata nu face parte din meniul nostru!");*/
         }
 
     }

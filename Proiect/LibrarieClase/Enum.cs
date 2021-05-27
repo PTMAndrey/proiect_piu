@@ -30,22 +30,19 @@ namespace LibrarieClase
     {
         oua = 1,
         lapte = 2,
-        branza = 3,
-        smantana = 4,
-        mozzarella = 5,
-        salam = 6,
-        sunca = 7,
-        bacon = 8,
-        zmeura = 9,
-        banane = 10,
+        mozzarella = 3,
+        crap = 4,
+        salam = 5,
+        sunca = 6,
+        pui = 7,
+        rosii = 8,
+        ardei = 9,
+        masline = 10,
         lamaie = 11,
         portocale = 12,
-        grapefruit = 13,
+        capsuni = 13,
         ciocolata = 14,
-        vanilie = 15,
-        rom = 16,
-        scortisoara = 17,
-        sifon = 18
-
+        vodca = 15,
+        scortisoara = 16
     }
 }
