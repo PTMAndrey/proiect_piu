@@ -331,8 +331,8 @@ namespace Proiect
 
                 string add = $"{locuri};{Convert.ToString((Locatie)locatie_masa)}";
 
-                bool consola = true;
-                m = new Masa(add, consola);
+                //bool consola = true;
+                m = new Masa(add);//, consola);
 
             } while (m.locuri == -1);
             return m;

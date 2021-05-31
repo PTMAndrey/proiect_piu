@@ -26,48 +26,48 @@ namespace LibrarieClase
             total_plata = 0;
             locatie = string.Empty;
         }
-        public Masa(string informatii_masa, bool citit_din_consola = false)
+        public Masa(string informatii_masa)//, bool citit_din_consola = false)
         {
             string[] info_masa = informatii_masa.Split(';');
 
-            try
-            {
-                if (citit_din_consola == false) /*numarul de ordine al campurilor clasei depind de locul de unde sunt preluate informatiile ( consola sau mese.txt )*/
+            //try
+            //{
+                //if (citit_din_consola == false) 
                     locuri = Convert.ToInt32(info_masa[1]);
-                else
-                    locuri = Convert.ToInt32(info_masa[0]); // am citit de la consola
+                //else
+                  //  locuri = Convert.ToInt32(info_masa[0]); // am citit de la consola
 
-            }
+            /*}
             catch (FormatException)
             {
                 Console.WriteLine("Incorect! Trebuie introdus un numar intreg pozitiv!");
                 locuri = -1;
             }
-            if( locuri != -1 )
-                if (citit_din_consola == false) // citire din fisier
-                {
+            if( locuri != -1 )*/
+                //if (citit_din_consola == false) // citire din fisier
+                //{
                     id = Convert.ToInt32(info_masa[0]);
                     last_id = id;
                     ocupat = Convert.ToBoolean(info_masa[2]);
                     cod_unic = Convert.ToInt32(info_masa[3]);
 
-                    if (ocupat == false)
+                    /*if (ocupat == false)
                         total_plata = 0;
-                    else
-                        total_plata = float.Parse(info_masa[4], CultureInfo.InvariantCulture.NumberFormat);
+                    else*/
+                        total_plata = Validari.Validare_ConvertToFloat_Pret_Meniu(info_masa[4]);
                     locatie = info_masa[5];
-                }
-                else // am citit de la consola
-                {
+                /*}
+                else
+                { 
                     cod_unic = GenerareCodUnic();
                     //if (Validari.Verificare_CodUnic == true)
                             
                     last_id++;
                     id = last_id;
-                    ocupat = false; /*Daca se introduce manual o masa atunci codul va fi generat automat*/
+                    ocupat = false;
                     total_plata = 0;
                     locatie = info_masa[1];
-                }
+                }*/
 
 
         }
