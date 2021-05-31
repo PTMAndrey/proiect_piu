@@ -51,7 +51,7 @@ namespace NivelAccesData
                 while ((line = sr.ReadLine()) != null)
                 {
                     Masa masaDinFisier = new Masa(line);
-                    if (masaDinFisier.locatie == locatie )
+                    if (masaDinFisier.locatie == locatie)
                     {
                         return masaDinFisier;
                     }
@@ -61,7 +61,7 @@ namespace NivelAccesData
             return null;
         }
 
-        public bool UpdateMasa(int _id)
+        public bool UpdateMasa(int _id, bool ocupat = false, string update_total_plata = "")
         {
             bool verificare = false;
             List<Masa> _masa = new List<Masa>();
@@ -70,14 +70,35 @@ namespace NivelAccesData
             {
                 string line;
 
-                //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
+                //citeste cate o linie si creaza un obiect de tip Masa pe baza datelor din linia citita
                 while ((line = sr.ReadLine()) != null)
                 {
                     Masa masaDinFisier = new Masa(line);
+
                     if (masaDinFisier.id == _id)
-                    { masaDinFisier.ocupat = true; verificare = true; }
+                        if (ocupat == false) // update pentru : 1) actualizare total plata ... 2) schimbare status masa din liber in ocupat
+                        {
+                            if (update_total_plata != "")
+                            {
+                                masaDinFisier.total_plata = Validari.Validare_ConvertToFloat_Pret_Meniu(update_total_plata);
+                            }
+                            else
+                            {
+                                masaDinFisier.ocupat = true;
+                            }
+                        }
+                        else
+                        if (ocupat == true) // update pentru eliberare masa
+                        {
+                            masaDinFisier.ocupat = false;
+                            masaDinFisier.cod_unic = masaDinFisier.GenerareCodUnic();
+                            masaDinFisier.total_plata = 0;
+                        }
+
+                    // update pentru actualizare pret total masa
 
                     _masa.Add(masaDinFisier);
+                    verificare = true;
                 }
             }
             if (verificare == true)
@@ -94,28 +115,10 @@ namespace NivelAccesData
                 return false;
         }
 
-        public int Generare_Cod_Unic(Masa b)
-        {
-            /*Citesc din fisier codurile unice, apoi verific daca codul unic generat cand s-a introdus masa la consola este egal cu vreun cod deja existent. Daca da, generez pana cand cele doua nu sunt egale*/
-            List<Masa> _masa = new List<Masa>();
-            using (StreamReader sr = new StreamReader(NumeFisier))
-            {
-                string line;
-
-                //citeste cate o linie si creaza un obiect de tip Masa pe baza datelor din linia citita
-                while ((line = sr.ReadLine()) != null)
-                {
-                    Masa masaDinFisier = new Masa(line);
-                    while (masaDinFisier.cod_unic == b.cod_unic)
-                        b.cod_unic = b.GenerareCodUnic();
-                }
-            }
-            return b.cod_unic;
-        }
 
         public void AddMasa(Masa b)
         {
-            b.cod_unic = Generare_Cod_Unic(b);
+            b.cod_unic = Validari.Validare_Cod_Unic(b, NumeFisier);
 
             //instructiunea 'using' va apela la final swFisierText.Close();
             //al doilea parametru setat la 'true' al constructorului StreamWriter indica modul 'append' de deschidere al fisierului
