@@ -489,7 +489,6 @@ namespace Restaurant_WindowsForms
                 IStocareMasa stocare_info_masa = new Administrare_masa();
                 List<Masa> l_mese = stocare_info_masa.GetInfo();
 
-                MessageBox.Show(lblPretTotal.Text);
                 stocare_info_masa.UpdateMasa(l_mese[id_masa_pentru_actualizare_pret_total_comanda-1].id, false, lblPretTotal.Text);
                         
 
