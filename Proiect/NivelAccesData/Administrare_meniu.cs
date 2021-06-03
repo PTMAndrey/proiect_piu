@@ -41,13 +41,13 @@ namespace NivelAccesData
 
             return _meniu;
         }
-        public Meniu GetInfo(int index) // functie de cautare
+        public Meniu GetInfo(int index) // functie de cautare -- folosita la modificare
         {
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
                 string line;
 
-                //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
+                //citeste cate o linie si creaza un obiect de tip Meniu pe baza datelor din linia citita
                 while ((line = sr.ReadLine()) != null)
                 {
                     Meniu meniu = new Meniu(line);
@@ -67,74 +67,104 @@ namespace NivelAccesData
             }
         }
 
-        public bool UpdateMeniu(Meniu update_camp_meniu)
+        public bool UpdateMeniu(Meniu update_camp_meniu, bool inceput = false)
         {
-            
-            List<Meniu> _meniu = GetInfo();
+
+            List<Meniu> _meniu = new List<Meniu>();
 
             bool actualizareCuSucces = false;
-            try
+
+            if (inceput == true)
             {
-                //instructiunea 'using' va apela la final swFisierText.Close();
-                //al doilea parametru setat la 'false' al constructorului StreamWriter indica modul 'overwrite' de deschidere al fisierului
-                using (StreamWriter swFisierText = new StreamWriter(NumeFisier, false))
+                _meniu.Add(update_camp_meniu);
+                actualizareCuSucces = true;
+            }
+            else
+            if (inceput == false)
+            {
+                using (StreamReader sr = new StreamReader(NumeFisier))
                 {
-                    foreach (Meniu m in _meniu)
+                    string line;
+
+                    //citeste cate o linie si creaza un obiect de tip Masa pe baza datelor din linia citita
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        Meniu meniu_pentru_stocare = m;
-                        //informatiile despre studentul actualizat vor fi preluate din parametrul "studentActualizat"
-                        if (m.id == update_camp_meniu.id)
-                        {
-                            meniu_pentru_stocare = update_camp_meniu;
-                        }
-                        swFisierText.WriteLine(meniu_pentru_stocare.ConversieLaSir_PentruScriereInFisier());
+                        Meniu meniuDinFisier = new Meniu(line);
+                        //if (meniuDinFisier.id == update_camp_meniu.id)
+                        //meniuDinFisier = update_camp_meniu;
+
+                        _meniu.Add(meniuDinFisier);
+                        actualizareCuSucces = true;
+
+
+                        //swFisierText.WriteLine(meniu_pentru_stocare.ConversieLaSir_PentruScriereInFisier());
                     }
-                    actualizareCuSucces = true;
                 }
+                _meniu.Add(update_camp_meniu);
             }
-            catch (IOException eIO)
+            
+            if (actualizareCuSucces == true)
             {
-                throw new Exception("Eroare la deschiderea fisierului. Mesaj: " + eIO.Message);
-            }
-            catch (Exception eGen)
-            {
-                throw new Exception("Eroare generica. Mesaj: " + eGen.Message);
-            }
-
-            return actualizareCuSucces;
-
-
-
-            /*using (StreamReader sr = new StreamReader(NumeFisier))
-            {
-                string line;
-
-                //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
-                while ((line = sr.ReadLine()) != null)
-                {
-                    Meniu meniuDinFisier = new(line);
-
-                    _meniu.Add(meniuDinFisier);
-                }
-                verificare = true;
-            }
-
-            //for (int i = 0; i < Meniu.last_id; i++)
-            _meniu.Add(m);
-
-            if (verificare == true)
-            {
+                int contor = 1;
                 File.Delete(NumeFisier);
                 IStocareMeniu stocare_info_meniu = new Administrare_meniu();
 
-                for (int i = 0; i < _meniu.Count; i++)
+                List<Meniu> list_copy = new List<Meniu>();
+                foreach(Meniu m in _meniu)
                 {
-                    stocare_info_meniu.Add(_meniu[i]);
+                    if (m.tip_aliment == "Mancare")
+                    {
+                        Meniu copy = new Meniu();
+                        copy.id = contor;
+                        copy.tip_aliment = "Mancare";
+                        copy.denumire = m.denumire;
+                        copy.pret = m.pret;
+
+                        contor++;
+
+                        list_copy.Add(copy);
+                    }
+                }
+                foreach (Meniu m in _meniu)
+                {
+                    if (m.tip_aliment == "Bautura")
+                    {
+                        Meniu copy = new Meniu();
+                        copy.id = contor;
+                        copy.tip_aliment = "Bautura";
+                        copy.denumire = m.denumire;
+                        copy.pret = m.pret;
+
+                        contor++;
+
+                        list_copy.Add(copy);
+                    }
+                }
+                foreach (Meniu m in _meniu)
+                {
+                    if (m.tip_aliment == "Desert")
+                    {
+                        Meniu copy = new Meniu();
+                        copy.id = contor;
+                        copy.tip_aliment = "Desert";
+                        copy.denumire = m.denumire;
+                        copy.pret = m.pret;
+
+                        contor++;
+
+                        list_copy.Add(copy);
+                    }
+                }
+
+
+                for (int i = 0; i < list_copy.Count; i++)
+                {
+                    stocare_info_meniu.Add(list_copy[i]);
                 }
                 return true;
             }
             else
-                return false;*/
+                return false;
         }
     }
 }

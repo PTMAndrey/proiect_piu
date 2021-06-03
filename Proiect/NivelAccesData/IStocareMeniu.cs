@@ -10,6 +10,6 @@ namespace NivelAccesData
         List<Meniu> GetInfo();
         Meniu GetInfo(int id);
         void Add(Meniu b);
-        public bool UpdateMeniu(Meniu m);
+        public bool UpdateMeniu(Meniu m, bool inceput = false);
     }
 }

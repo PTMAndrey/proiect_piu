@@ -10,7 +10,6 @@ D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_Wi
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\bin\Debug\net5.0-windows\LibrarieClase.pdb
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\bin\Debug\net5.0-windows\NivelAccesData.pdb
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.csprojAssemblyReference.cache
-D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.Client_form.resources
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.csproj.GenerateResource.cache
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.GeneratedMSBuildEditorConfig.editorconfig
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.AssemblyInfoInputs.cache
@@ -21,3 +20,5 @@ D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_Wi
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\ref\Restaurant_WindowsForms.dll
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.pdb
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.genruntimeconfig.cache
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.Restaurant_Form.resources
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\Restaurant_WindowsForms\obj\Debug\net5.0-windows\Restaurant_WindowsForms.Properties.Resources.resources

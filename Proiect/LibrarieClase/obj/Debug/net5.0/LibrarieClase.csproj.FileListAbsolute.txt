@@ -9,3 +9,4 @@ D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\LibrarieClase
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\LibrarieClase\obj\Debug\net5.0\LibrarieClase.dll
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\LibrarieClase\obj\Debug\net5.0\ref\LibrarieClase.dll
 D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\LibrarieClase\obj\Debug\net5.0\LibrarieClase.pdb
+D:\An 2\SEM 2\Eu 2021\PIU\Laborator\REPOSITORY\proiect_piu\Proiect\LibrarieClase\obj\Debug\net5.0\LibrarieClase.csprojAssemblyReference.cache

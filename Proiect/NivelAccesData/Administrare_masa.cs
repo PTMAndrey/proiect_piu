@@ -41,6 +41,7 @@ namespace NivelAccesData
 
             return _masa;
         }
+
         public Masa Cauta(string locatie) // caut masa din locatia selectata in groupbox-ul cu butoane radio si o returnez daca exista
         {
             using (StreamReader sr = new StreamReader(NumeFisier))
@@ -61,53 +62,147 @@ namespace NivelAccesData
             return null;
         }
 
-        public bool UpdateMasa(int _id, bool ocupat = false, string update_total_plata = "")
+        public bool UpdateMasa(int _id, bool ocupat = false, int locuri = 0, string locatie = "", string update_total_plata = "", bool eliberare_masa = false)
         {
             bool verificare = false;
             List<Masa> _masa = new List<Masa>();
 
-            using (StreamReader sr = new StreamReader(NumeFisier))
+            if (_id == 1 && locuri != 0 && locatie != "") // daca fisierul este gol, din form primesc _id = 1
             {
-                string line;
-
-                //citeste cate o linie si creaza un obiect de tip Masa pe baza datelor din linia citita
-                while ((line = sr.ReadLine()) != null)
+                Masa m = new Masa();
+                m.id = _id;
+                m.locuri = locuri;
+                m.locatie = locatie;
+                m.ocupat = false;
+                m.total_plata = 0;
+                _masa.Add(m);
+            }
+            else
+            {
+                using (StreamReader sr = new StreamReader(NumeFisier))
                 {
-                    Masa masaDinFisier = new Masa(line);
+                    string line;
 
-                    if (masaDinFisier.id == _id)
-                        if (ocupat == false) // update pentru : 1) actualizare total plata ... 2) schimbare status masa din liber in ocupat
+                    //citeste cate o linie si creaza un obiect de tip Masa pe baza datelor din linia citita
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        Masa masaDinFisier = new Masa(line);
+
+                        if (masaDinFisier.id == _id)
                         {
-                            if (update_total_plata != "")
+                            if (eliberare_masa == false)
                             {
-                                masaDinFisier.total_plata = Validari.Validare_ConvertToFloat_Pret_Meniu(update_total_plata);
+                                if (ocupat == true && locuri == 0 && update_total_plata == "")  // schimbare status masa la rezervarea unui client
+                                    masaDinFisier.ocupat = true;
+
+                                if (ocupat == true && locuri == 0 && update_total_plata != "") // update pret total in meniu
+                                {
+                                    masaDinFisier.total_plata = Validari.Validare_ConvertToFloat_Pret_Meniu(update_total_plata);
+                                    masaDinFisier.ocupat = true;
+                                }
                             }
                             else
                             {
-                                masaDinFisier.ocupat = true;
+                                masaDinFisier.ocupat = false;
+                                masaDinFisier.cod_unic = masaDinFisier.GenerareCodUnic();
+                                masaDinFisier.total_plata = 0;
                             }
+
                         }
-                        else
-                        if (ocupat == true) // update pentru eliberare masa
+                        /*else
+                        if (ocupat == true && locuri == 0 && update_total_plata == "") // update pentru eliberare masa
                         {
                             masaDinFisier.ocupat = false;
                             masaDinFisier.cod_unic = masaDinFisier.GenerareCodUnic();
                             masaDinFisier.total_plata = 0;
-                        }
+                        }*/
 
-                    // update pentru actualizare pret total masa
 
-                    _masa.Add(masaDinFisier);
-                    verificare = true;
+                        // update pentru actualizare pret total masa
+
+
+                        _masa.Add(masaDinFisier);
+
+                        verificare = true;
+                    }
                 }
             }
+            Masa add_to_list_masa = new Masa();
+            if (ocupat == false && locuri != 0 && locatie != "" && update_total_plata == "") // adauga masa
+            {
+                add_to_list_masa.id = _id;
+                add_to_list_masa.ocupat = false;
+                add_to_list_masa.locuri = locuri;
+                add_to_list_masa.cod_unic = add_to_list_masa.GenerareCodUnic();
+                add_to_list_masa.locatie = locatie;
+                add_to_list_masa.total_plata = 0;
+
+                _masa.Add(add_to_list_masa);
+                verificare = true;
+            }
+
             if (verificare == true)
             {
+                int contor = 1;
                 File.Delete(NumeFisier);
                 IStocareMasa stocare_info_masa = new Administrare_masa();
-                for (int i = 0; i < _masa.Count; i++)
+                
+                // sortare list 
+                List<Masa> list_copy = new List<Masa>();
+                foreach(Masa m in _masa)
                 {
-                    stocare_info_masa.AddMasa(_masa[i]);
+                    if(m.locatie == "Interior")
+                    {
+                        Masa copy = new Masa();
+                        copy.id = contor;
+                        copy.locuri = m.locuri;
+                        copy.locatie = "Interior";
+                        copy.cod_unic = m.cod_unic;
+                        copy.total_plata = m.total_plata;
+                        copy.ocupat = m.ocupat;
+                        contor++;
+
+                        list_copy.Add(copy);
+                    }
+                }
+                foreach (Masa m in _masa)
+                {
+                    if (m.locatie == "Separeu")
+                    {
+                        Masa copy = new Masa();
+                        copy.id = contor;
+                        copy.locuri = m.locuri;
+                        copy.locatie = "Separeu";
+                        copy.cod_unic = m.cod_unic;
+                        copy.total_plata = m.total_plata;
+                        copy.ocupat = m.ocupat;
+
+                        contor++;
+
+                        list_copy.Add(copy);
+                    }
+                }
+                foreach (Masa m in _masa)
+                {
+                    if (m.locatie == "Terasa")
+                    {
+                        Masa copy = new Masa();
+                        copy.id = contor;
+                        copy.locuri = m.locuri;
+                        copy.locatie = "Terasa";
+                        copy.cod_unic = m.cod_unic;
+                        copy.total_plata = m.total_plata;
+                        copy.ocupat = m.ocupat;
+
+                        contor++;
+
+                        list_copy.Add(copy);
+                    }
+                }
+
+                for (int i = 0; i < list_copy.Count; i++)
+                {
+                    stocare_info_masa.AddMasa(list_copy[i]);
                 }
                 return true;
             }
@@ -119,6 +214,8 @@ namespace NivelAccesData
         public void AddMasa(Masa b)
         {
             b.cod_unic = Validari.Validare_Cod_Unic(b, NumeFisier);
+
+            
 
             //instructiunea 'using' va apela la final swFisierText.Close();
             //al doilea parametru setat la 'true' al constructorului StreamWriter indica modul 'append' de deschidere al fisierului

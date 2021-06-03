@@ -65,16 +65,18 @@ namespace LibrarieClase
 
         public static bool Validare_Date_Rezervare(string nume, string prenume, string cnp)
         {
-            if (nume == string.Empty || prenume == string.Empty || cnp == string.Empty)
+            if (nume == ""|| prenume == "" || cnp == "")
                 return false;
             return true;
         }
 
         public static bool Admin_Validare_Date_Meniu(string tip, string denumire, string pret)
         {
-            if (tip == string.Empty || denumire == string.Empty || pret == string.Empty)
+            if (tip == "" || denumire == "" || pret == "")
                 return false;
             return true;
         }
+
+
     }
 }

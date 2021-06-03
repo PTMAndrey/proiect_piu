@@ -17,7 +17,7 @@ namespace Restaurant_WindowsForms
             System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            System.Windows.Forms.Application.Run(new Client_form());
+            System.Windows.Forms.Application.Run(new Restaurant_Form());
         }
     }
 }

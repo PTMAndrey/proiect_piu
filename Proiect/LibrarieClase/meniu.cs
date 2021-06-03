@@ -33,20 +33,20 @@ namespace LibrarieClase
             /*for (int i = 0; i < info_bautura.Length; i++)
                 Console.WriteLine(info_bautura[i] + " ");
             Console.ReadKey();*/
-            if (citit_din_consola == false) // daca am citit din fisier text, pret e pe pozitia 2 in fisier
+            //if (citit_din_consola == false) // daca am citit din fisier text, pret e pe pozitia 2 in fisier
                 pret = Validari.Validare_ConvertToFloat_Pret_Meniu(info_bautura[2]);
-            else
-                pret = Validari.Validare_ConvertToFloat_Pret_Meniu(info_bautura[1]);
+            //else
+                //pret = Validari.Validare_ConvertToFloat_Pret_Meniu(info_bautura[1]);
 
-            if (pret != -1)
-            {
+            //if (pret != -1)
+            //{
 
-                if (citit_din_consola == false)
-                {
+                //if (citit_din_consola == false)
+                //{
                     id = Convert.ToInt32(info_bautura[0]);
                     denumire = info_bautura[1];
                     tip_aliment = info_bautura[3];
-                }
+                /*}
                 else
                 {
                     last_id++;
@@ -61,7 +61,7 @@ namespace LibrarieClase
                 id = last_id;
                 denumire = string.Empty;
                 tip_aliment = string.Empty;
-            }
+            }*/
         }
 
         public string ConversieLaSir_PentruAfisare()
