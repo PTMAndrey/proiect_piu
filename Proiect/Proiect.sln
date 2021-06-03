@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NivelAccesData", "NivelAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibrarieClase", "LibrarieClase\LibrarieClase.csproj", "{FED98087-6F4B-4703-9DC7-381D1A4F1168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant_WindowsForms", "Restaurant_WindowsForms\Restaurant_WindowsForms.csproj", "{2BF1B5F3-A5F3-42D4-8BCB-4688A2B6819D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant_WindowsForms", "Restaurant_WindowsForms\Restaurant_WindowsForms.csproj", "{2BF1B5F3-A5F3-42D4-8BCB-4688A2B6819D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

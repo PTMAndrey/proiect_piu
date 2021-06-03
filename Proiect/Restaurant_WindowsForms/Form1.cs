@@ -14,9 +14,9 @@ using System.Globalization;
 
 namespace Restaurant_WindowsForms
 {
-    public partial class Client_form : Form
+    public partial class Restaurant_Form : Form
     {
-        public Client_form()
+        public Restaurant_Form()
         {
             InitializeComponent();
 
@@ -25,13 +25,28 @@ namespace Restaurant_WindowsForms
         bool validare = true;
         public static int last_id = 0;
         public const int CIFRE_CNP = 13;
-        public const int LIMITA_MAXIMA_TEXT = 15;
+        public const int LIMITA_MAXIMA_TEXT = 30;
         public const int LIMITA_MINIMA_TEXT = 3;
-       
-        
-        
-        private void Client_form_Load(object sender, EventArgs e)
+        public bool btn_pentru_mese = true;
+
+
+
+        private void Restaurant_form_Load(object sender, EventArgs e)
         {
+            revenire_form_client();
+
+            reset_erori();
+
+            mentenanta();
+        }
+
+        #region CLIENT
+
+        public void revenire_form_client()
+        {
+            btnEliberareMasa.Visible = false;
+            lstAfisareInfo.Enabled = true;
+
             rdbINTERIOR.Checked = false;
             rdbSEPAREU.Checked = false;
             rdbTERASA.Checked = false;
@@ -41,24 +56,106 @@ namespace Restaurant_WindowsForms
             grMese.Visible = false;
             grRezervareClient.Visible = false;
             grAfiseazaInfo.Visible = false;
-            grIntroducetiCodulMesei.Visible = false;
 
-            lblOPTMASA.Visible = false;
+            grIntroducetiCodulMesei.Visible = false;
+            btnCodGata.Visible = false;
+
+            lblOPTMASA.Visible = false; btnCOMANDA.Visible = true;
+            lblTotalPlata_Bon.Visible = true;
 
             grOPTIUNI.Visible = true;
+            btnOptDetinMasa.BackColor = Color.LightGray;
+            btnOptRezervare.BackColor = Color.LightGray;
+            btnOptDetinMasa.ForeColor = Color.Black;
+
+
             lblGetPret.Text = "";
             lblPretTotal.Text = "";
-            btnCodGata.Visible = false;
+
+            lblTextCamp1.Text = "Tip";
+            lblTextCamp2.Text = "Denumire";
+            lblTextCamp3.Text = "Pret";
+            lblTextCamp2.Visible = true;
+
+            btnAdminModifica.Text = "Adauga";
+
+            grAfiseazaInfo.Text = "Meniu";
+            btnCOMANDA.Visible = true;
+            lblTotalPlata_Bon.Visible = true;
+
+
 
             lblGetDenumire.ForeColor = Color.Transparent;
             lblGetTip.ForeColor = Color.Transparent;
             lblPretTotal.ForeColor = Color.Transparent;
             lblGetPret.ForeColor = Color.Transparent;
 
-            grModificareMeniu.Visible = false;
-            reset_erori();
+
+            lblEroareNume.Text = "";
+            lblEroareNume.ForeColor = Color.Transparent;
+            lblEroareNume.Visible = true;
+            lblEroarePrenume.Text = "";
+            lblEroarePrenume.ForeColor = Color.Transparent;
+            lblEroarePrenume.Visible = true;
+            lblEroareCNP.Text = "";
+            lblEroareCNP.ForeColor = Color.Transparent;
+            lblEroareCNP.Visible = true;
+
+            lblEroareCOD.Text = "";
+            lblEroareCOD.ForeColor = Color.Transparent;
+
+            lblEroareCamp1.Text = "";
+            lblEroareCamp1.ForeColor = Color.Transparent;
+            lblEroareCamp2.Text = "";
+            lblEroareCamp2.ForeColor = Color.Transparent;
+            lblEroareCamp3.Text = "";
+            lblEroareCamp3.ForeColor = Color.Transparent;
+
+
+            btnADMIN.Location = new Point(26, 25);
+            btnADMIN.Visible = true;
+            btnAdminIesire.Visible = false;
+
+            grAdminModificare.Visible = false;
+            grAdminOptiuni.Visible = false;
+            btnAdminIesire.Visible = false;
+            btnAdminInapoi.Visible = false;
+
+
+            btn_pentru_mese = false;
+
+            //mentenanta();
         }
 
+        public void mentenanta()
+        {
+            IStocareMasa stocare_info_masa = new Administrare_masa();
+            List<Masa> l_mese = stocare_info_masa.GetInfo();
+
+
+            if (Masa.last_id != 0)
+            {
+                IStocareMeniu stocare_info_meniu = new Administrare_meniu();
+                List<Meniu> l_meniu = stocare_info_meniu.GetInfo();
+                if (l_meniu.Count != 0)
+                {
+                    grOPTIUNI.Visible = true;
+                    btnADMIN.Location = new Point(26, 25);
+                }
+                else
+                {
+                    grOPTIUNI.Visible = false;
+                    btnADMIN.Location = new Point(639, 435);
+                    MessageBox.Show("Momentan restaurantul este in mentenanta! Ne cerem scuze pentru discomfortul creat!\n\n* Daca sunteti administratorul va rugam sa actualizati meniul in restaurant!");
+                }
+            }
+            else
+            {
+                grOPTIUNI.Visible = false;
+                btnADMIN.Location = new Point(639, 435);
+                MessageBox.Show("Momentan restaurantul este in mentenanta! Ne cerem scuze pentru discomfortul creat!\n\n* Daca sunteti administratorul va rugam sa actualizati mesele in restaurant!");
+            }
+        }
 
         // #########  Butoane de selectie in prim-plan. --- Rezerva masa --- Detin masa
 
@@ -71,6 +168,11 @@ namespace Restaurant_WindowsForms
             grAfiseazaInfo.Location = new Point(1147, 204);
 
             grOPTIUNI.Visible = false;
+
+
+            btnOptRezervare.BackColor = Color.LightGray;
+            btnOptDetinMasa.BackColor = Color.LightGray;
+            btnOptDetinMasa.ForeColor = Color.Black;
 
             grIntroducetiCodulMesei.Visible = false;
             grAfiseazaInfo.Visible = false;
@@ -90,6 +192,10 @@ namespace Restaurant_WindowsForms
             reset_erori();
             grIntroducetiCodulMesei.Location = new Point(384, 204);// (433, 231);
             grAfiseazaInfo.Location = new Point(899, 204);
+
+            btnOptDetinMasa.BackColor = Color.LightGreen;
+            btnOptDetinMasa.ForeColor = Color.White;
+            btnOptRezervare.BackColor = Color.LightGray;
 
             txtCodUnic.Text = "";
             grAfiseazaInfo.Visible = false;
@@ -117,8 +223,29 @@ namespace Restaurant_WindowsForms
             grIntroducetiCodulMesei.Visible = false;
             grAfiseazaInfo.Visible = false;
 
+            //IStocareMasa stocare_info_masa = new Administrare_masa();
+            //List<Masa> l_mese = stocare_info_masa.GetInfo();
+
+            //int nr = 0, x = 35;
             if (rdbINTERIOR.Checked)
-            {
+            {/*
+                int ok = 0;
+                foreach (Masa m in l_mese)
+                {
+                    if (m.locatie == "Interior")
+                    {
+                        nr++;
+                        ok++;
+                        Button btnMasa = new Button();
+                        btnMasa.Name = "btnMasa" + ok;
+                        btnMasa.Text = "Masa " + ok;
+                        btnMasa.TabIndex = nr;
+                        btnMasa.Location = new Point(x, 70);
+                        btnMasa.Height = 101;
+                        btnMasa.Width = 94;
+                        x += 181;
+                    }
+                }*/
                 rdbSEPAREU.Checked = false;
                 rdbTERASA.Checked = false;
                 index_rezervare = -1;
@@ -127,9 +254,26 @@ namespace Restaurant_WindowsForms
 
                 reset_controale_client();
                 grMese.Visible = true;
+
             }
             if (rdbSEPAREU.Checked)
             {
+                /*
+                foreach (Masa m in l_mese)
+                {
+                    if (m.locatie == "Separeu")
+                    {
+                        nr++;
+                        Button btnMasa = new Button();
+                        btnMasa.Name = "btnMasa" + nr;
+                        btnMasa.Text = "Masa " + nr;
+                        btnMasa.TabIndex = nr;
+                        btnMasa.Location = new Point(x, 70);
+                        btnMasa.Height = 101;
+                        btnMasa.Width = 94;
+                        x += 181;
+                    }
+                }*/
                 index_rezervare = 3;
 
                 rdbINTERIOR.Checked = false;
@@ -155,6 +299,10 @@ namespace Restaurant_WindowsForms
 
             if (rdbANULEAZA.Checked)
             {
+                btnOptRezervare.BackColor = Color.LightGray;
+                btnOptDetinMasa.BackColor = Color.LightGray;
+                btnOptDetinMasa.ForeColor = Color.Black;
+
                 reset_controale_client();
                 reset_erori();
                 rdbINTERIOR.Checked = false;
@@ -172,7 +320,7 @@ namespace Restaurant_WindowsForms
 
                 grOPTIUNI.Visible = true;
             }
-            
+
         }
 
         public void Afisare_Mese(int index)
@@ -181,24 +329,25 @@ namespace Restaurant_WindowsForms
             IStocareMasa stocare_info_masa = new Administrare_masa();
             List<Masa> l_mese = stocare_info_masa.GetInfo();
 
-            foreach (Button btn in grMese.Controls.Cast<Control>().Reverse())
-            {
-                if (l_mese[index].ocupat == true)
+            if (l_mese != null)
+                foreach (Button btn in grMese.Controls.Cast<Control>().Reverse())
                 {
-                    btn.BackColor = Color.Gray;
-                    btn.Enabled = false;
-                    btn.Text = "Masa " + btn.TabIndex + "\nOCUPAT";
-                }
-                else
-                {
-                    btn.BackColor = Color.Lime;
-                    btn.Enabled = true;
-                    btn.Cursor = Cursors.Hand;
-                    btn.Text = "Masa " + btn.TabIndex + "\n" + l_mese[index].locuri.ToString() + " locuri";
-                }
+                    if (l_mese[index].ocupat == true)
+                    {
+                        btn.BackColor = Color.Gray;
+                        btn.Enabled = false;
+                        btn.Text = "Masa " + btn.TabIndex + "\nOCUPAT";
+                    }
+                    else
+                    {
+                        btn.BackColor = Color.Lime;
+                        btn.Enabled = true;
+                        btn.Cursor = Cursors.Hand;
+                        btn.Text = "Masa " + btn.TabIndex + "\n" + l_mese[index].locuri.ToString() + " locuri";
+                    }
 
-                index++;
-            }
+                    index++;
+                }
         }
 
         static int index_rezervare_dupa_selectie_masa = 0;
@@ -222,7 +371,7 @@ namespace Restaurant_WindowsForms
         private void btnREZERVA_Click(object sender, EventArgs e) // BUTON DE REZERVARE ---- ADAUGARE CLIENT IN FISIER
         {
 
-            if (! Validari.Validare_Date_Rezervare(lblNUME.Text, lblPRENUME.Text, lblCNP.Text) )
+            if (!Validari.Validare_Date_Rezervare(lblNUME.Text, lblPRENUME.Text, lblCNP.Text))
             {
                 lblNUME.ForeColor = Color.Red;
                 lblPRENUME.ForeColor = Color.Red;
@@ -264,13 +413,13 @@ namespace Restaurant_WindowsForms
             for (int i = 0; i < l_mese.Count; i++)
                 if (l_mese[i].id == index_rezervare_dupa_selectie_masa)
                 {
-                    stocare_info_masa.UpdateMasa(l_mese[i].id, false);
+                    stocare_info_masa.UpdateMasa(l_mese[i].id, true);
                     cod_unic = l_mese[i].cod_unic;
                     break;
                 }
             stocare_info_masa.GetInfo();
-            
-            Afisare_Mese(index_rezervare+1);
+
+            Afisare_Mese(index_rezervare + 1);
 
             reset_controale_client();
 
@@ -290,12 +439,16 @@ namespace Restaurant_WindowsForms
 
 
         }
+
         bool validare_cod = true;
         private void txtCodUnic_TextChanged(object sender, EventArgs e) // textbox introducere cod masa
         {
+            btnEliberareMasa.Visible = true;
+            
             validare_cod = true;
 
             btnCodGata.Visible = false;
+            
             if (txtCodUnic.Text.Length > 5)
             {
                 lblEroareCOD.Text = "SUNT NECESARE EXACT 5 CIFRE";
@@ -306,7 +459,7 @@ namespace Restaurant_WindowsForms
             {
                 string txtcodunic = txtCodUnic.Text;
                 for (int i = 0; i < txtcodunic.Length; i++)
-                    if (char.IsLetter(txtcodunic[i]))
+                    if (!char.IsDigit(txtcodunic[i]))
                     {
                         lblEroareCOD.Text = "TREBUIE SA CONTINA DOAR CIFRE";
                         lblEroareCOD.ForeColor = Color.Green;
@@ -320,7 +473,7 @@ namespace Restaurant_WindowsForms
                 lblEroareCOD.ForeColor = Color.Transparent;
                 btnCodGata.Visible = true;
             }
-            
+
 
         }
 
@@ -339,13 +492,15 @@ namespace Restaurant_WindowsForms
                     if (l_mese[i].ocupat == false)
                     {
                         MessageBox.Show("Masa cu acest cod nu a fost rezervata de dumneavoastra!");
+                        txtCodUnic.Text = "";
+                        btnCodGata.Visible = false;
                         grAfiseazaInfo.Visible = false;
                         lblOPTMASA.Visible = false;
                     }
                     else
                     {
                         lblOPTMASA.Visible = true;
-                        if(l_mese[i].locatie == "Interior")
+                        if (l_mese[i].locatie == "Interior")
                             lblOPTMASA.Text = $"MASA {id_masa_pentru_actualizare_pret_total_comanda} - {l_mese[i].locatie}";
 
                         if (l_mese[i].locatie == "Separeu")
@@ -355,7 +510,7 @@ namespace Restaurant_WindowsForms
                             lblOPTMASA.Text = $"MASA {id_masa_pentru_actualizare_pret_total_comanda - 8} - {l_mese[i].locatie}";
 
                         lblPretTotal.Text = (Validari.Validare_ConvertToFloat_Pret_Meniu(l_mese[i].total_plata.ToString())).ToString(); // primeste 0 din fisier sau valoarea adunata a preturilor
-                         
+
                         // 4 comenzi necesare pentru revenirea de la admin la client
                         grAfiseazaInfo.Visible = true;
                         grAfiseazaInfo.Text = "Meniu";
@@ -365,19 +520,25 @@ namespace Restaurant_WindowsForms
                         lblPretTotal.ForeColor = Color.Transparent;
                         lblTotalPlata_Bon.Text = $"Total plata\n{lblPretTotal.Text} RON";
 
-                       
+
 
                         lblGetPret.Text = "";
                         lstAfisareInfo.Items.Clear();
                     }
 
-                    test = true; 
+                    test = true;
                     break;
                 }
 
             }
             if (test == false)
+            {
+                txtCodUnic.Text = "";
+                btnCodGata.Visible = false;
                 MessageBox.Show("Codul mesei nu corespunde cu una dintre mesele rezervate!");
+                grAfiseazaInfo.Visible = false;
+                lblOPTMASA.Visible = false;
+            }
         }
 
         private void txtNUME_TextChanged(object sender, EventArgs e) // eveniment in textbox Nume. Afisare erori
@@ -394,12 +555,12 @@ namespace Restaurant_WindowsForms
             if (txtNUME.Text.Length < LIMITA_MINIMA_TEXT)
             {
                 lblEroareNume.Text = "MINIM " + LIMITA_MINIMA_TEXT + " CARACTERE";
-                lblEroareNume.ForeColor = Color.Green; 
+                lblEroareNume.ForeColor = Color.Green;
                 lblEroareNume.Visible = true;
                 validare = false;
             }
 
-            if(validare == true)
+            if (validare == true)
             {
                 lblEroareNume.Text = "";
                 lblEroareNume.ForeColor = Color.Transparent;
@@ -414,12 +575,12 @@ namespace Restaurant_WindowsForms
             if (txtPRENUME.Text.Length > LIMITA_MAXIMA_TEXT)
             {
                 lblEroarePrenume.Text = "MAXIM " + LIMITA_MAXIMA_TEXT + " CARACTERE";
-                lblEroarePrenume.ForeColor = Color.Green; 
+                lblEroarePrenume.ForeColor = Color.Green;
                 lblEroarePrenume.Visible = true;
                 validare = false;
             }
             else
-            if(txtPRENUME.Text.Length < LIMITA_MINIMA_TEXT)
+            if (txtPRENUME.Text.Length < LIMITA_MINIMA_TEXT)
             {
                 lblEroarePrenume.Text = "MINIM " + LIMITA_MINIMA_TEXT + " CARACTERE";
                 lblEroarePrenume.ForeColor = Color.Green;
@@ -427,7 +588,7 @@ namespace Restaurant_WindowsForms
                 validare = false;
             }
 
-            if( validare == true )
+            if (validare == true)
             {
                 lblEroarePrenume.Text = "";
                 lblEroarePrenume.ForeColor = Color.Transparent;
@@ -436,7 +597,7 @@ namespace Restaurant_WindowsForms
             }
         } // eveniment in textbox Prenume. Afisare erori
 
-        private void txtCNP_TextChanged(object sender, EventArgs e)
+        private void txtCNP_TextChanged(object sender, EventArgs e) // eveniment in textbox CNP. Afisare erori
         {
             validare = true;
             if (txtCNP.Text.Length != CIFRE_CNP)
@@ -460,13 +621,13 @@ namespace Restaurant_WindowsForms
                     }
 
             }
-            if( validare == true)
+            if (validare == true)
             {
                 lblEroareCNP.Visible = false;
                 lblEroareCNP.Text = "";
                 lblEroareCNP.ForeColor = Color.Transparent;
             }
-        }  // eveniment in textbox CNP. Afisare erori
+        }
 
 
 
@@ -489,8 +650,8 @@ namespace Restaurant_WindowsForms
                 IStocareMasa stocare_info_masa = new Administrare_masa();
                 List<Masa> l_mese = stocare_info_masa.GetInfo();
 
-                stocare_info_masa.UpdateMasa(l_mese[id_masa_pentru_actualizare_pret_total_comanda-1].id, false, lblPretTotal.Text);
-                        
+                stocare_info_masa.UpdateMasa(l_mese[id_masa_pentru_actualizare_pret_total_comanda - 1].id, true, 0, "", lblPretTotal.Text);
+
 
                 stocare_info_masa.GetInfo();
 
@@ -500,75 +661,106 @@ namespace Restaurant_WindowsForms
         }
 
 
-        private void btnAfiseazaMeniu_Click(object sender, EventArgs e) // buton Afiseaza --- afiseaza meniul
+        private void btnEliberareMasa_Click(object sender, EventArgs e)
         {
-            lblGetPret.Text = "";
-            lstAfisareInfo.Items.Clear();
-
-            var antetTabel = String.Format("{0,-14}\t{1,0}\t{2,15}\t{3,5}\n", "TIP", "ID", "NUME", "PRET");
-            lstAfisareInfo.Items.Add(antetTabel);
-            lstAfisareInfo.Items.Add("___________________________________________________________");
-
-            IStocareMeniu stocare_info_meniu = new Administrare_meniu();
-
-            List<Meniu> list_meniu = stocare_info_meniu.GetInfo();
-            foreach (Meniu meniu in list_meniu)
+            DialogResult intrebare = MessageBox.Show("Sunteti sigur ca doriti sa eliberati masa " + id_masa_pentru_actualizare_pret_total_comanda.ToString(),"Parasire restaurant", MessageBoxButtons.OKCancel);
+            if (intrebare == DialogResult.OK)
             {
-                var linieTabel = String.Format("{0,-14}\t{1,0}\t{2,15}\t{3,5}\n", meniu.tip_aliment, meniu.id, meniu.denumire, meniu.pret);
-                lstAfisareInfo.Items.Add(linieTabel);
+                MessageBox.Show("Masa " + id_masa_pentru_actualizare_pret_total_comanda.ToString() + " a fost eliberata! Va asteptam cu drag la restaurantul nostru");
+                IStocareMasa stocare_info_masa = new Administrare_masa();
+                stocare_info_masa.UpdateMasa(id_masa_pentru_actualizare_pret_total_comanda, false, 0, "", "", true);
+                revenire_form_client();
+            }
+            
+        }
 
+        private void btnAfiseazaInfo_Click(object sender, EventArgs e) // buton Afiseaza --- afiseaza meniul || afiseaza mesele
+        {
+            if (btn_pentru_mese == false) // afisarea meniu client + admin
+            {
+                btnEliberareMasa.Visible = true;
+                lstAfisareInfo.Enabled = true;
+                lblGetPret.Text = "";
+                lstAfisareInfo.Items.Clear();
+
+                var antetTabel = String.Format("{0,-14}\t{1,0}\t{2,-30}\t{3,5}\n", "TIP", "ID", "NUME", "PRET");
+                lstAfisareInfo.Items.Add(antetTabel);
+                lstAfisareInfo.Items.Add("___________________________________________________________________");
+
+                IStocareMeniu stocare_info_meniu = new Administrare_meniu();
+
+                List<Meniu> list_meniu = stocare_info_meniu.GetInfo();
+
+                foreach (Meniu meniu in list_meniu)
+                {
+                    string linieTabel = "";
+                    //if( meniu.denumire.Length)
+                    linieTabel = String.Format("{0,-14}\t{1,0}\t{2,-30}\t{3,5}\n", meniu.tip_aliment, meniu.id, meniu.denumire, meniu.pret);
+                    //linieTabel= String.Format("{0,-14}\t{1,0}\t{2,15}\t\t{3,5}\n", meniu.tip_aliment, meniu.id, meniu.denumire, meniu.pret);
+                    if (meniu.tip_aliment == Tip_aliment.Mancare.ToString())
+                        lstAfisareInfo.Items.Add(linieTabel);
+                }
+                foreach (Meniu meniu in list_meniu)
+                {
+                    string linieTabel = String.Format("{0,-14}\t{1,0}\t{2,-30}\t{3,5}\n", meniu.tip_aliment, meniu.id, meniu.denumire, meniu.pret);
+                    if (meniu.tip_aliment == Tip_aliment.Bautura.ToString())
+                        lstAfisareInfo.Items.Add(linieTabel);
+                }
+                foreach (Meniu meniu in list_meniu)
+                {
+                    string linieTabel = String.Format("{0,-14}\t{1,0}\t{2,-30}\t{3,5}\n", meniu.tip_aliment, meniu.id, meniu.denumire, meniu.pret);
+                    if (meniu.tip_aliment == Tip_aliment.Desert.ToString())
+                        lstAfisareInfo.Items.Add(linieTabel);
+                }
+            }
+            // afisarea meselor in cadrul ADMIN
+            else
+            {
+                btnEliberareMasa.Visible = false;
+                lstAfisareInfo.Enabled = true;
+                lblGetPret.Text = "";
+                lstAfisareInfo.Items.Clear();
+
+                var antetTabel = String.Format("{0,-10}\t{1,-5}\t{2,-5}\t{3,-5}\t{4,-5}\t{5,-5}\n", "ID", "LOCATIE", "LOCURI", "COD", "TOTAL", "STATUS");
+                lstAfisareInfo.Items.Add(antetTabel);
+                lstAfisareInfo.Items.Add("________________________________________________________________");
+
+                IStocareMasa stocare_info_masa = new Administrare_masa();
+
+                List<Masa> list_masa = stocare_info_masa.GetInfo();
+
+                foreach (Masa masa in list_masa)
+                {
+                    string linieTabel = "";
+                    if (masa.ocupat == true)
+                        linieTabel = String.Format("{0,-10}\t{1,-5}\t{2,-5}\t{3,-5}\t{4,-5}\t{5,-5}\n", masa.id, masa.locatie, masa.locuri, masa.cod_unic, masa.total_plata, "Rezervat");
+                    else
+                        linieTabel = String.Format("{0,-10}\t{1,-5}\t{2,-5}\t{3,-5}\t{4,-5}\t{5,-5}\n", masa.id, masa.locatie, masa.locuri, masa.cod_unic, masa.total_plata, "Liber");
+                    //if (masa.tip_aliment == Tip_aliment.Mancare.ToString())
+
+                    lstAfisareInfo.Items.Add(linieTabel);
+                }
             }
         }
 
-        private void SelectedIndexChanged(object sender, EventArgs e)
+        private void SelectedIndexChanged(object sender, EventArgs e)// eveniment pentru itemul selectat din meeniu
         {
             IStocareMeniu stocare_info_meniu = new Administrare_meniu();
             Meniu camp_selectat = stocare_info_meniu.GetInfo(Convert.ToInt32(lstAfisareInfo.SelectedIndex - 1));
             if (camp_selectat != null)
             {
-                lblGetTip.Text = txtModificaTip.Text = camp_selectat.tip_aliment.ToString();
-                lblGetDenumire.Text = txtModificaDenumire.Text = camp_selectat.denumire;
-                lblGetPret.Text = txtModificaPret.Text = camp_selectat.pret.ToString();
+                // liniile comentate pot fi folosite pentru modificare meniu
+                //lblGetTip.Text = txtAdminCamp1.Text = camp_selectat.tip_aliment.ToString();
+                lblGetTip.Text = camp_selectat.tip_aliment.ToString();
+                //lblGetDenumire.Text = txtAdminCamp2.Text = camp_selectat.denumire;
+                lblGetDenumire.Text = camp_selectat.denumire;
+                //lblGetPret.Text = txtAdminCamp3.Text = camp_selectat.pret.ToString();
+                lblGetPret.Text = camp_selectat.pret.ToString();
 
             }
             else { lblGetPret.Text = ""; }
 
-        } // eveniment pentru itemul selectat din meniu
-
-        private void btnMODIFICA_Click(object sender, EventArgs e) // buton de modificare meniu --- admin
-        {
-            if (! Validari.Admin_Validare_Date_Meniu(lblTIP.Text, lblDENUMIRE.Text, lblPRET.Text) )
-            {
-                lblTIP.ForeColor = Color.Red;
-                lblDENUMIRE.ForeColor = Color.Red;
-                lblPRET.ForeColor = Color.Red;
-                MessageBox.Show("Campuri obligatoriu de completat");
-                return;
-            }
-
-            if (validare == false)
-            {
-                MessageBox.Show("Valori invalide");
-                return;
-            }
-
-            IStocareMeniu stocare_info_meniu = new Administrare_meniu();
-            Meniu camp_modificat = stocare_info_meniu.GetInfo(Convert.ToInt32(lstAfisareInfo.SelectedIndex - 1));
-
-            camp_modificat.tip_aliment = txtModificaTip.Text;
-            camp_modificat.denumire = txtModificaDenumire.Text;
-            camp_modificat.pret = float.Parse(txtModificaPret.Text, System.Globalization.CultureInfo.InvariantCulture);
-
-            stocare_info_meniu.UpdateMeniu(camp_modificat);
-            admin_reset_controale_meniu();
-            btnAfiseazaMeniu_Click(sender, e);
-        } // Buton de modificare pentru rolul de administrator
-
-
-
-
-
-
+        }
 
 
         public void reset_controale_client() // sterge textul si erorile afisate la textboxuri
@@ -587,17 +779,437 @@ namespace Restaurant_WindowsForms
             validare = true;
         }
 
-        public void admin_reset_controale_meniu() // sterge textul din textboxurile din modificare meniu - admin mode
-        {
-            txtModificaTip.Text = ""; txtModificaDenumire.Text = ""; txtModificaPret.Text = "";
-
-        }
 
         public void reset_erori() // resetarea generala a erorilor
         {
             lblEroareNume.Text = ""; lblEroarePrenume.Text = ""; lblEroareCNP.Text = ""; lblEroareCOD.Text = "";
             lblEroareNume.ForeColor = Color.Transparent; lblEroarePrenume.ForeColor = Color.Transparent; lblEroareCNP.ForeColor = Color.Transparent; lblEroareCOD.ForeColor = Color.Transparent;
+
         }
+
+
+        #endregion
+
+
+        #region ADMIN
+
+        private void btnADMIN_Click(object sender, EventArgs e)
+        {
+            revenire_form_client();
+            grOPTIUNI.Visible = false;
+
+            grAdminOptiuni.Visible = true;
+
+            grAfiseazaInfo.Visible = false;
+            grAdminModificare.Visible = false;
+
+
+            btnADMIN.Visible = false;
+            btnAdminIesire.Visible = true;
+
+        }
+
+        private void btnAdaugaMese_Click(object sender, EventArgs e)
+        {
+
+            btnAdminInapoi.Visible = true;
+
+            lstAfisareInfo.Enabled = true;
+            lstAfisareInfo.Items.Clear();
+            lstAfisareInfo.ClearSelected();
+
+            grAdminOptiuni.Visible = false;
+
+            // modific text, nume, date in grupul cu list
+            grAfiseazaInfo.Text = "Mese";
+            btnCOMANDA.Visible = false;
+            lblTotalPlata_Bon.Visible = false;
+            grAfiseazaInfo.Visible = true;
+
+
+            grAdminModificare.Text = "Adauga mese";
+            grAdminModificare.Location = new Point(300, 250);
+            grAdminModificare.Visible = true;
+
+            txtAdminCamp1.Text = "";
+            txtAdminCamp2.Text = "";
+            txtAdminCamp3.Text = "";
+            grAdmin_rdbCamp1.Visible = true;
+            grAdminLocuri.Visible = true;
+            txtAdminCamp1.Visible = false;
+            txtAdminCamp2.Visible = false;
+            txtAdminCamp3.Visible = false;
+
+            lblTextCamp1.Text = "Locatie";
+            lblTextCamp2.Visible = false;
+            lblTextCamp3.Text = "Nr locuri";
+
+
+            rdbAdmin_rdb1.Visible = true;
+            rdbAdmin_rdb2.Visible = true;
+            rdbAdmin_rdb3.Visible = true;
+            rdbAdmin_rdb1.Text = "Interior";
+            rdbAdmin_rdb2.Text = "Separeu";
+            rdbAdmin_rdb3.Text = "Terasa";
+
+            rdb2locuri.Visible = true;
+            rdb3locuri.Visible = true;
+            rdb5locuri.Visible = true;
+            rdb7locuri.Visible = true;
+            rdb9locuri.Visible = true;
+
+            rdb2locuri.Checked = false;
+            rdb3locuri.Checked = false;
+            rdb5locuri.Checked = false;
+            rdb7locuri.Checked = false;
+            rdb9locuri.Checked = false;
+
+            btnAdminModifica.Text = "Adauga";
+
+            btn_pentru_mese = true;
+
+        }
+
+        private void btnAdaugaMeniu_Click(object sender, EventArgs e)
+        {
+            btnAdminInapoi.Visible = true;
+
+            lstAfisareInfo.Enabled = true;
+            lstAfisareInfo.Items.Clear();
+            lstAfisareInfo.ClearSelected();
+
+            grAdminOptiuni.Visible = false;
+
+            grAfiseazaInfo.Visible = true;
+
+            rdbAdmin_rdb1.Visible = true;
+            rdbAdmin_rdb2.Visible = true;
+            rdbAdmin_rdb3.Visible = true;
+            rdbAdmin_rdb1.Text = "Mancare";
+            rdbAdmin_rdb2.Text = "Bautura";
+            rdbAdmin_rdb3.Text = "Desert";
+
+            rdb2locuri.Visible = false;
+            rdb3locuri.Visible = false;
+            rdb5locuri.Visible = false;
+            rdb7locuri.Visible = false;
+            rdb9locuri.Visible = false;
+
+            rdb2locuri.Checked = false;
+            rdb3locuri.Checked = false;
+            rdb5locuri.Checked = false;
+            rdb7locuri.Checked = false;
+            rdb9locuri.Checked = false;
+
+
+            grAdminModificare.Text = "Adauga meniu";
+            grAdminModificare.Location = new Point(300, 250);
+            grAdminModificare.Visible = true;
+
+            lblTextCamp1.Text = "Tip";
+            lblTextCamp2.Text = "Denumire";
+            lblTextCamp3.Text = "Pret";
+            lblTextCamp2.Visible = true;
+
+            grAdmin_rdbCamp1.Visible = true;
+            grAdminLocuri.Visible = false;
+            txtAdminCamp1.Visible = false;
+            txtAdminCamp2.Visible = true;
+            txtAdminCamp3.Visible = true;
+
+            btnAdminModifica.Text = "Adauga";
+
+            grAfiseazaInfo.Text = "Meniu";
+            btnCOMANDA.Visible = false;
+            lblTotalPlata_Bon.Visible = false;
+
+            btn_pentru_mese = false;
+        }
+
+
+        // Controale meniu
+
+        private void txtAdminCamp1_TextChanged(object sender, EventArgs e)
+        {
+
+            validare = true;
+            if (txtAdminCamp1.Text.Length > LIMITA_MAXIMA_TEXT)
+            {
+                lblEroareCamp1.Text = "MAXIM " + LIMITA_MAXIMA_TEXT + " CARACTERE";
+                lblEroareCamp1.ForeColor = Color.Green;
+                lblEroareCamp1.Visible = true;
+                validare = false;
+            }
+            else
+            if (txtAdminCamp1.Text.Length < LIMITA_MINIMA_TEXT)
+            {
+                lblEroareCamp1.Text = "MINIM " + LIMITA_MINIMA_TEXT + " CARACTERE";
+                lblEroareCamp1.ForeColor = Color.Green;
+                lblEroareCamp1.Visible = true;
+                validare = false;
+            }
+
+            if (validare == true)
+            {
+                lblEroareCamp1.Text = "";
+                lblEroareCamp1.ForeColor = Color.Transparent;
+                lblEroareCamp1.Visible = false;
+
+            }
+        }
+
+        private void txtAdminCamp2_TextChanged(object sender, EventArgs e)
+        {
+
+            validare = true;
+            if (txtAdminCamp2.Text.Length > LIMITA_MAXIMA_TEXT)
+            {
+                lblEroareCamp2.Text = "MAXIM " + LIMITA_MAXIMA_TEXT + " CARACTERE";
+                lblEroareCamp2.ForeColor = Color.Green;
+                lblEroareCamp2.Visible = true;
+                validare = false;
+            }
+            else
+            if (txtAdminCamp2.Text.Length < LIMITA_MINIMA_TEXT)
+            {
+                lblEroareCamp2.Text = "MINIM " + LIMITA_MINIMA_TEXT + " CARACTERE";
+                lblEroareCamp2.ForeColor = Color.Green;
+                lblEroareCamp2.Visible = true;
+                validare = false;
+            }
+
+            if (validare == true)
+            {
+                lblEroareCamp2.Text = "";
+                lblEroareCamp2.ForeColor = Color.Transparent;
+                lblEroareCamp2.Visible = false;
+
+            }
+        }
+
+        // inca e eroare la pret
+        private void txtAdminCamp3_TextChanged(object sender, EventArgs e)
+        {
+            validare = true;
+            string pret = txtAdminCamp3.Text;
+
+            for (int i = 0; i < pret.Length; i++)
+            {
+                if (!char.IsDigit(pret[i]))
+                {
+                    lblEroareCamp3.Text = "TREBUIE SA CONTINA DOAR CIFRE";
+                    lblEroareCamp3.ForeColor = Color.Green;
+                    lblEroareCamp3.Visible = true;
+                    validare = false;
+                }
+            }
+
+            if (validare == true)
+            {
+                lblEroareCamp3.Visible = false;
+                lblEroareCamp3.Text = "";
+                lblEroareCamp3.ForeColor = Color.Transparent;
+            }
+        }
+        private void btnAdminAdauga_Modifica_Click(object sender, EventArgs e)// Buton de modificare meniu pentru rolul de administrator
+        {
+            validare = true;
+            if (btn_pentru_mese == false) // am selectat in admin optiunea de adaugare meniu
+            {
+                lblTextCamp1.ForeColor = Color.Black;
+                lblTextCamp2.ForeColor = Color.Black;
+                lblTextCamp3.ForeColor = Color.Black;
+
+
+                if (rdbAdmin_rdb1.Checked == false && rdbAdmin_rdb2.Checked == false && rdbAdmin_rdb3.Checked == false)
+                {
+                    lblEroareCamp1.Text = "Selectati locatia mesei";
+                    lblEroareCamp1.ForeColor = Color.Green;
+                    lblEroareCamp1.Visible = true;
+                    validare = false;
+                }
+
+                if (txtAdminCamp2.Text == "")
+                {
+                    lblEroareCamp2.Text = "Introduceti denumirea produsului";
+                    lblEroareCamp2.ForeColor = Color.Green;
+                    lblEroareCamp2.Visible = true;
+                    validare = false;
+                }
+                if (txtAdminCamp3.Text == "")
+                {
+                    lblEroareCamp3.Text = "Introduceti pretul produsului";
+                    lblEroareCamp3.ForeColor = Color.Green;
+                    lblEroareCamp3.Visible = true;
+                    validare = false;
+                }
+
+
+                if (validare == true)
+                {
+                    IStocareMeniu stocare_info_meniu = new Administrare_meniu();
+                    List<Meniu> list_meniu = stocare_info_meniu.GetInfo();
+
+                    Meniu add_meniu = new Meniu();
+                    if (rdbAdmin_rdb1.Checked == true)
+                        add_meniu.tip_aliment = rdbAdmin_rdb1.Text;
+                    else
+                    if (rdbAdmin_rdb2.Checked == true)
+                        add_meniu.tip_aliment = rdbAdmin_rdb2.Text;
+                    else
+                    if (rdbAdmin_rdb3.Checked == true)
+                        add_meniu.tip_aliment = rdbAdmin_rdb3.Text;
+
+                    add_meniu.denumire = txtAdminCamp2.Text;
+                    //txtAdminCamp3.Text
+                    string pret_nou = "";
+                    string pret = txtAdminCamp3.Text;
+                    for (int i = 0; i < pret.Length; i++)
+                    {
+                        if (pret[i] == '.')
+                            pret_nou += '.';
+                        else
+                            if (pret[i] == ',')
+                            pret_nou += '.';
+                        else
+                        if (char.IsDigit(pret[i]))
+                            pret_nou += pret[i];
+                    }
+
+                    MessageBox.Show(pret_nou);
+                    add_meniu.pret = float.Parse(pret_nou, System.Globalization.CultureInfo.InvariantCulture);
+
+                    if (list_meniu.Count != 0)
+                    {
+                        add_meniu.id = Meniu.last_id;
+                        stocare_info_meniu.UpdateMeniu(add_meniu);
+                    }
+                    else
+                    {
+                        add_meniu.id = 1;
+                        stocare_info_meniu.UpdateMeniu(add_meniu, true);
+                    }
+
+
+                    admin_reset_controale_meniu();
+                    btnAfiseazaInfo_Click(sender, e);
+                }
+
+            }
+            // adaugare mese
+            else
+            {
+                if (rdbAdmin_rdb1.Checked == false && rdbAdmin_rdb2.Checked == false && rdbAdmin_rdb3.Checked == false)
+                {
+                    lblEroareCamp1.Text = "Selectati locatia mesei";
+                    lblEroareCamp1.ForeColor = Color.Green;
+                    lblEroareCamp1.Visible = true;
+                    validare = false;
+                }
+                if (rdb2locuri.Checked == false && rdb3locuri.Checked == false && rdb5locuri.Checked == false && rdb7locuri.Checked == false && rdb9locuri.Checked == false)
+                {
+                    lblEroareCamp3.Text = "Selectati numarul de locuri";
+                    lblEroareCamp3.ForeColor = Color.Green;
+                    lblEroareCamp3.Visible = true;
+                    validare = false;
+                }
+
+                if (validare == true)
+                {
+                    lblEroareCamp1.Text = "";
+                    lblEroareCamp2.Text = "";
+                    lblEroareCamp3.Text = "";
+                    lblEroareCamp1.ForeColor = Color.Transparent;
+                    lblEroareCamp2.ForeColor = Color.Transparent;
+                    lblEroareCamp3.ForeColor = Color.Transparent;
+
+
+                    string _locatie = "";
+                    int _locuri = 0;
+
+                    if (rdbAdmin_rdb1.Checked == true)
+                        _locatie = rdbAdmin_rdb1.Text;
+                    else
+                    if (rdbAdmin_rdb2.Checked == true)
+                        _locatie = rdbAdmin_rdb2.Text;
+                    else
+                    if (rdbAdmin_rdb3.Checked == true)
+                        _locatie = rdbAdmin_rdb3.Text;
+
+                    if (rdb2locuri.Checked)
+                        _locuri = Convert.ToInt32(rdb2locuri.Text);
+                    if (rdb3locuri.Checked)
+                        _locuri = Convert.ToInt32(rdb3locuri.Text);
+                    if (rdb5locuri.Checked)
+                        _locuri = Convert.ToInt32(rdb5locuri.Text);
+                    if (rdb7locuri.Checked)
+                        _locuri = Convert.ToInt32(rdb7locuri.Text);
+                    if (rdb9locuri.Checked)
+                        _locuri = Convert.ToInt32(rdb9locuri.Text);
+
+
+
+                    Masa b = new Masa();
+                    b.locuri = b.GenerareCodUnic();
+                    IStocareMasa stocare_info_masa = new Administrare_masa();
+                    List<Masa> list_masa = stocare_info_masa.GetInfo();
+
+                    if (list_masa.Count != 0)
+                    {
+                        // Verificare numar mese 
+                        int nr1 = 0;
+                        foreach (Masa m in list_masa)
+                            if (m.locatie == _locatie)
+                                nr1++;
+
+                        if (nr1 < 4)
+                            stocare_info_masa.UpdateMasa(Masa.last_id, false, _locuri, _locatie);
+
+                        if (nr1 == 4)
+                            MessageBox.Show($"Nu se mai pot adauga mese in {_locatie}!\nNumar maxim de mese: 4");
+                    }
+                    else
+                    {
+                        stocare_info_masa.UpdateMasa(1, false, _locuri, _locatie);
+                    }
+
+                    rdbAdmin_rdb1.Checked = false;
+                    rdbAdmin_rdb2.Checked = false;
+                    rdbAdmin_rdb3.Checked = false;
+                    rdb2locuri.Checked = false;
+                    rdb3locuri.Checked = false;
+                    rdb5locuri.Checked = false;
+                    rdb7locuri.Checked = false;
+                    rdb9locuri.Checked = false;
+                }
+            }
+        }
+
+        public void admin_reset_controale_meniu()
+        {
+            txtAdminCamp1.Text = "";
+            txtAdminCamp2.Text = "";
+            txtAdminCamp3.Text = "";
+            lblEroareCamp1.Visible = true;
+            lblEroareCamp1.Visible = true;
+            lblEroareCamp1.Visible = true;
+            lblEroareCamp1.Text = "";
+            lblEroareCamp2.Text = "";
+            lblEroareCamp3.Text = "";
+            lblEroareCamp1.ForeColor = Color.Transparent;
+            lblEroareCamp2.ForeColor = Color.Transparent;
+            lblEroareCamp3.ForeColor = Color.Transparent;
+        }
+
+        private void btnAdminIesire_Click(object sender, EventArgs e)
+        {
+            revenire_form_client();
+            admin_reset_controale_meniu();
+            reset_controale_client();
+            reset_erori();
+        }
+        #endregion
+
 
         private void Client_form_Closing(object sender, FormClosingEventArgs e)
         {
@@ -615,9 +1227,5 @@ namespace Restaurant_WindowsForms
             }
         }
 
-        private void btnADMIN_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
