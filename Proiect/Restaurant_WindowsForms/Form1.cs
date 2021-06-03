@@ -401,8 +401,8 @@ namespace Restaurant_WindowsForms
             else
                 last_id = 0;
 
-            string cl = last_id.ToString() + ";" + txtNUME.Text + ";" + txtPRENUME.Text + ";" + txtCNP.Text + ";" + index_rezervare.ToString();
-
+            string cl = last_id.ToString() + ";" + txtNUME.Text + ";" + txtPRENUME.Text + ";" + txtCNP.Text + ";" + index_rezervare_dupa_selectie_masa.ToString();
+            MessageBox.Show(cl);
             Client client = new Client(cl);
             stocare_info_client.AddClient(client);
 
@@ -459,7 +459,7 @@ namespace Restaurant_WindowsForms
             {
                 string txtcodunic = txtCodUnic.Text;
                 for (int i = 0; i < txtcodunic.Length; i++)
-                    if (!char.IsDigit(txtcodunic[i]))
+                    if (!char.IsDigit(txtcodunic[i]) || txtcodunic[i] == '-' )
                     {
                         lblEroareCOD.Text = "TREBUIE SA CONTINA DOAR CIFRE";
                         lblEroareCOD.ForeColor = Color.Green;
@@ -611,7 +611,7 @@ namespace Restaurant_WindowsForms
             {
                 string cnp = txtCNP.Text;
                 for (int i = 0; i < cnp.Length; i++)
-                    if (!char.IsDigit(cnp[i]))
+                    if (!char.IsDigit(cnp[i]) )
                     {
                         lblEroareCNP.Text = "TREBUIE SA CONTINA DOAR CIFRE";
                         lblEroareCNP.ForeColor = Color.Green;
@@ -803,9 +803,26 @@ namespace Restaurant_WindowsForms
             grAfiseazaInfo.Visible = false;
             grAdminModificare.Visible = false;
 
+            lblEroareCamp1.Visible = false;
+            lblEroareCamp2.Text = "";
+            lblEroareCamp2.ForeColor = Color.Transparent;
+            lblEroareCamp2.Visible = false;
+            lblEroareCamp3.Visible = false;
 
             btnADMIN.Visible = false;
             btnAdminIesire.Visible = true;
+            
+            rdbAdmin_rdb1.Checked = false;
+            rdbAdmin_rdb2.Checked = false;
+            rdbAdmin_rdb3.Checked = false;
+            rdb2locuri.Checked = false;
+            rdb3locuri.Checked = false;
+            rdb5locuri.Checked = false;
+            rdb7locuri.Checked = false;
+            rdb9locuri.Checked = false;
+            txtAdminCamp1.Text = "";
+            txtAdminCamp2.Text = "";
+            txtAdminCamp3.Text = "";
 
         }
 
@@ -848,6 +865,11 @@ namespace Restaurant_WindowsForms
             rdbAdmin_rdb1.Visible = true;
             rdbAdmin_rdb2.Visible = true;
             rdbAdmin_rdb3.Visible = true;
+            rdbAdmin_rdb1.Checked = false;
+            rdbAdmin_rdb2.Checked = false;
+            rdbAdmin_rdb3.Checked = false;
+
+
             rdbAdmin_rdb1.Text = "Interior";
             rdbAdmin_rdb2.Text = "Separeu";
             rdbAdmin_rdb3.Text = "Terasa";
@@ -885,6 +907,10 @@ namespace Restaurant_WindowsForms
             rdbAdmin_rdb1.Visible = true;
             rdbAdmin_rdb2.Visible = true;
             rdbAdmin_rdb3.Visible = true;
+            rdbAdmin_rdb1.Checked = false;
+            rdbAdmin_rdb2.Checked = false;
+            rdbAdmin_rdb3.Checked = false;
+
             rdbAdmin_rdb1.Text = "Mancare";
             rdbAdmin_rdb2.Text = "Bautura";
             rdbAdmin_rdb3.Text = "Desert";
@@ -995,7 +1021,7 @@ namespace Restaurant_WindowsForms
 
             for (int i = 0; i < pret.Length; i++)
             {
-                if (!char.IsDigit(pret[i]))
+                if (!char.IsDigit(pret[i]) || pret[i] == '-')
                 {
                     lblEroareCamp3.Text = "TREBUIE SA CONTINA DOAR CIFRE";
                     lblEroareCamp3.ForeColor = Color.Green;
@@ -1016,6 +1042,10 @@ namespace Restaurant_WindowsForms
             validare = true;
             if (btn_pentru_mese == false) // am selectat in admin optiunea de adaugare meniu
             {
+                rdbAdmin_rdb1.Checked = false;
+                rdbAdmin_rdb2.Checked = false;
+                rdbAdmin_rdb3.Checked = false;
+
                 lblTextCamp1.ForeColor = Color.Black;
                 lblTextCamp2.ForeColor = Color.Black;
                 lblTextCamp3.ForeColor = Color.Black;
@@ -1047,6 +1077,11 @@ namespace Restaurant_WindowsForms
 
                 if (validare == true)
                 {
+
+                    rdbAdmin_rdb1.Checked = false;
+                    rdbAdmin_rdb2.Checked = false;
+                    rdbAdmin_rdb3.Checked = false;
+
                     IStocareMeniu stocare_info_meniu = new Administrare_meniu();
                     List<Meniu> list_meniu = stocare_info_meniu.GetInfo();
 
@@ -1181,6 +1216,9 @@ namespace Restaurant_WindowsForms
                     rdb5locuri.Checked = false;
                     rdb7locuri.Checked = false;
                     rdb9locuri.Checked = false;
+                    txtAdminCamp1.Text = "";
+                    txtAdminCamp2.Text = "";
+                    txtAdminCamp3.Text = "";
                 }
             }
         }
@@ -1191,8 +1229,8 @@ namespace Restaurant_WindowsForms
             txtAdminCamp2.Text = "";
             txtAdminCamp3.Text = "";
             lblEroareCamp1.Visible = true;
-            lblEroareCamp1.Visible = true;
-            lblEroareCamp1.Visible = true;
+            lblEroareCamp2.Visible = true;
+            lblEroareCamp3.Visible = true;
             lblEroareCamp1.Text = "";
             lblEroareCamp2.Text = "";
             lblEroareCamp3.Text = "";

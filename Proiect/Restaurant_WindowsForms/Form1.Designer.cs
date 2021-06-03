@@ -80,6 +80,7 @@ namespace Restaurant_WindowsForms
             this.btnOptRezervare = new System.Windows.Forms.Button();
             this.lblOPTMASA = new System.Windows.Forms.Label();
             this.grAdminModificare = new System.Windows.Forms.GroupBox();
+            this.lblEroareCamp3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grAdmin_rdbCamp1 = new System.Windows.Forms.GroupBox();
@@ -89,7 +90,6 @@ namespace Restaurant_WindowsForms
             this.grAdminLocuri = new System.Windows.Forms.GroupBox();
             this.rdb7locuri = new System.Windows.Forms.RadioButton();
             this.rdb9locuri = new System.Windows.Forms.RadioButton();
-            this.lblEroareCamp3 = new System.Windows.Forms.Label();
             this.rdb5locuri = new System.Windows.Forms.RadioButton();
             this.rdb3locuri = new System.Windows.Forms.RadioButton();
             this.rdb2locuri = new System.Windows.Forms.RadioButton();
@@ -691,6 +691,7 @@ namespace Restaurant_WindowsForms
             // grAdminModificare
             // 
             this.grAdminModificare.BackColor = System.Drawing.Color.Transparent;
+            this.grAdminModificare.Controls.Add(this.lblEroareCamp3);
             this.grAdminModificare.Controls.Add(this.label2);
             this.grAdminModificare.Controls.Add(this.label1);
             this.grAdminModificare.Controls.Add(this.lblEroareCamp2);
@@ -711,6 +712,16 @@ namespace Restaurant_WindowsForms
             this.grAdminModificare.TabIndex = 41;
             this.grAdminModificare.TabStop = false;
             this.grAdminModificare.Text = "Modificare meniu";
+            // 
+            // lblEroareCamp3
+            // 
+            this.lblEroareCamp3.AutoSize = true;
+            this.lblEroareCamp3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblEroareCamp3.ForeColor = System.Drawing.Color.Transparent;
+            this.lblEroareCamp3.Location = new System.Drawing.Point(193, 235);
+            this.lblEroareCamp3.Name = "lblEroareCamp3";
+            this.lblEroareCamp3.Size = new System.Drawing.Size(0, 20);
+            this.lblEroareCamp3.TabIndex = 55;
             // 
             // label2
             // 
@@ -738,7 +749,7 @@ namespace Restaurant_WindowsForms
             this.grAdmin_rdbCamp1.Controls.Add(this.rdbAdmin_rdb1);
             this.grAdmin_rdbCamp1.Controls.Add(this.rdbAdmin_rdb2);
             this.grAdmin_rdbCamp1.Controls.Add(this.rdbAdmin_rdb3);
-            this.grAdmin_rdbCamp1.Location = new System.Drawing.Point(177, 40);
+            this.grAdmin_rdbCamp1.Location = new System.Drawing.Point(177, 33);
             this.grAdmin_rdbCamp1.Name = "grAdmin_rdbCamp1";
             this.grAdmin_rdbCamp1.Size = new System.Drawing.Size(315, 69);
             this.grAdmin_rdbCamp1.TabIndex = 53;
@@ -784,13 +795,12 @@ namespace Restaurant_WindowsForms
             // 
             this.grAdminLocuri.Controls.Add(this.rdb7locuri);
             this.grAdminLocuri.Controls.Add(this.rdb9locuri);
-            this.grAdminLocuri.Controls.Add(this.lblEroareCamp3);
             this.grAdminLocuri.Controls.Add(this.rdb5locuri);
             this.grAdminLocuri.Controls.Add(this.rdb3locuri);
             this.grAdminLocuri.Controls.Add(this.rdb2locuri);
-            this.grAdminLocuri.Location = new System.Drawing.Point(177, 152);
+            this.grAdminLocuri.Location = new System.Drawing.Point(178, 121);
             this.grAdminLocuri.Name = "grAdminLocuri";
-            this.grAdminLocuri.Size = new System.Drawing.Size(315, 128);
+            this.grAdminLocuri.Size = new System.Drawing.Size(315, 111);
             this.grAdminLocuri.TabIndex = 54;
             this.grAdminLocuri.TabStop = false;
             // 
@@ -817,16 +827,6 @@ namespace Restaurant_WindowsForms
             this.rdb9locuri.TabStop = true;
             this.rdb9locuri.Text = "9";
             this.rdb9locuri.UseVisualStyleBackColor = true;
-            // 
-            // lblEroareCamp3
-            // 
-            this.lblEroareCamp3.AutoSize = true;
-            this.lblEroareCamp3.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblEroareCamp3.ForeColor = System.Drawing.Color.Transparent;
-            this.lblEroareCamp3.Location = new System.Drawing.Point(25, 86);
-            this.lblEroareCamp3.Name = "lblEroareCamp3";
-            this.lblEroareCamp3.Size = new System.Drawing.Size(0, 20);
-            this.lblEroareCamp3.TabIndex = 36;
             // 
             // rdb5locuri
             // 
@@ -1036,7 +1036,6 @@ namespace Restaurant_WindowsForms
         private System.Windows.Forms.GroupBox grAdminModificare;
         private System.Windows.Forms.RadioButton rdbANULEAZA;
         private System.Windows.Forms.Button btnADMIN;
-        private System.Windows.Forms.Label lblEroareCamp3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdminIesire;
@@ -1056,6 +1055,7 @@ namespace Restaurant_WindowsForms
         private System.Windows.Forms.GroupBox grAdmin_rdbCamp1;
         private System.Windows.Forms.Button btnAdminInapoi;
         private System.Windows.Forms.Button btnEliberareMasa;
+        private System.Windows.Forms.Label lblEroareCamp3;
     }
 }
 
