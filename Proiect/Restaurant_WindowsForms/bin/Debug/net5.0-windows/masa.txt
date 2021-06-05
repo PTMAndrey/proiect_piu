@@ -1,12 +1,12 @@
 1;7;False;85191;0;Interior
-2;2;False;13388;0;Interior
-3;2;True;54684;30;Interior
+2;2;True;13388;0;Interior
+3;2;False;40841;0;Interior
 4;9;False;42469;0;Interior
 5;5;False;97140;0;Separeu
-6;5;True;88195;0;Separeu
-7;5;False;47277;0;Separeu
+6;5;True;88195;10;Separeu
+7;5;True;47277;4,5;Separeu
 8;9;True;15872;37,5;Separeu
 9;5;False;50167;0;Terasa
 10;3;True;76281;50;Terasa
 11;3;False;25887;0;Terasa
-12;9;True;52537;21,5;Terasa
+12;9;False;56468;0;Terasa

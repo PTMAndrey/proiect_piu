@@ -94,7 +94,7 @@ namespace Restaurant_WindowsForms
             this.rdb3locuri = new System.Windows.Forms.RadioButton();
             this.rdb2locuri = new System.Windows.Forms.RadioButton();
             this.btnADMIN = new System.Windows.Forms.Button();
-            this.btnAdminIesire = new System.Windows.Forms.Button();
+            this.btnHOME = new System.Windows.Forms.Button();
             this.grAdminOptiuni = new System.Windows.Forms.GroupBox();
             this.btnAdaugaMeniu = new System.Windows.Forms.Button();
             this.btnAdaugaMese = new System.Windows.Forms.Button();
@@ -877,18 +877,18 @@ namespace Restaurant_WindowsForms
             this.btnADMIN.UseVisualStyleBackColor = false;
             this.btnADMIN.Click += new System.EventHandler(this.btnADMIN_Click);
             // 
-            // btnAdminIesire
+            // btnHOME
             // 
-            this.btnAdminIesire.BackColor = System.Drawing.Color.LightGray;
-            this.btnAdminIesire.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdminIesire.Font = new System.Drawing.Font("Hobo Std", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAdminIesire.Location = new System.Drawing.Point(26, 25);
-            this.btnAdminIesire.Name = "btnAdminIesire";
-            this.btnAdminIesire.Size = new System.Drawing.Size(134, 39);
-            this.btnAdminIesire.TabIndex = 43;
-            this.btnAdminIesire.Text = "IESIRE";
-            this.btnAdminIesire.UseVisualStyleBackColor = false;
-            this.btnAdminIesire.Click += new System.EventHandler(this.btnAdminIesire_Click);
+            this.btnHOME.BackColor = System.Drawing.Color.LightGray;
+            this.btnHOME.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHOME.Font = new System.Drawing.Font("Hobo Std", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnHOME.Location = new System.Drawing.Point(26, 25);
+            this.btnHOME.Name = "btnHOME";
+            this.btnHOME.Size = new System.Drawing.Size(134, 39);
+            this.btnHOME.TabIndex = 43;
+            this.btnHOME.Text = "HOME";
+            this.btnHOME.UseVisualStyleBackColor = false;
+            this.btnHOME.Click += new System.EventHandler(this.btnHOME_Click);
             // 
             // grAdminOptiuni
             // 
@@ -946,7 +946,6 @@ namespace Restaurant_WindowsForms
             this.Controls.Add(this.btnAdminInapoi);
             this.Controls.Add(this.grAdminModificare);
             this.Controls.Add(this.grAdminOptiuni);
-            this.Controls.Add(this.btnADMIN);
             this.Controls.Add(this.lblOPTMASA);
             this.Controls.Add(this.grOPTIUNI);
             this.Controls.Add(this.grAfiseazaInfo);
@@ -955,7 +954,8 @@ namespace Restaurant_WindowsForms
             this.Controls.Add(this.txtNumeRestaurant);
             this.Controls.Add(this.grLocatie);
             this.Controls.Add(this.grIntroducetiCodulMesei);
-            this.Controls.Add(this.btnAdminIesire);
+            this.Controls.Add(this.btnHOME);
+            this.Controls.Add(this.btnADMIN);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Restaurant_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1038,7 +1038,7 @@ namespace Restaurant_WindowsForms
         private System.Windows.Forms.Button btnADMIN;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAdminIesire;
+        private System.Windows.Forms.Button btnHOME;
         private System.Windows.Forms.GroupBox grAdminOptiuni;
         private System.Windows.Forms.Button btnAdaugaMeniu;
         private System.Windows.Forms.Button btnAdaugaMese;
@@ -1056,6 +1056,7 @@ namespace Restaurant_WindowsForms
         private System.Windows.Forms.Button btnAdminInapoi;
         private System.Windows.Forms.Button btnEliberareMasa;
         private System.Windows.Forms.Label lblEroareCamp3;
+        private System.Windows.Forms.Button btnAdminIesire;
     }
 }
 
