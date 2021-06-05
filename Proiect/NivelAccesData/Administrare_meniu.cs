@@ -16,10 +16,6 @@ namespace NivelAccesData
         {
             Stream sFisierText = File.Open(NumeFisier, FileMode.OpenOrCreate);
             sFisierText.Close();
-
-            //liniile de mai sus pot fi inlocuite cu linia de cod urmatoare deoarece
-            //instructiunea 'using' va apela sFisierText.Close();
-            //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
 
         public List<Meniu> GetInfo() // preluare informatii din fisier
@@ -69,35 +65,21 @@ namespace NivelAccesData
 
         public bool UpdateMeniu(Meniu update_camp_meniu, bool inceput = false)
         {
-
             List<Meniu> _meniu = new List<Meniu>();
-
             bool actualizareCuSucces = false;
-
             if (inceput == true)
-            {
-                _meniu.Add(update_camp_meniu);
-                actualizareCuSucces = true;
-            }
+                { _meniu.Add(update_camp_meniu);   actualizareCuSucces = true; }
             else
             if (inceput == false)
             {
                 using (StreamReader sr = new StreamReader(NumeFisier))
                 {
                     string line;
-
-                    //citeste cate o linie si creaza un obiect de tip Masa pe baza datelor din linia citita
                     while ((line = sr.ReadLine()) != null)
                     {
                         Meniu meniuDinFisier = new Meniu(line);
-                        //if (meniuDinFisier.id == update_camp_meniu.id)
-                        //meniuDinFisier = update_camp_meniu;
-
                         _meniu.Add(meniuDinFisier);
                         actualizareCuSucces = true;
-
-
-                        //swFisierText.WriteLine(meniu_pentru_stocare.ConversieLaSir_PentruScriereInFisier());
                     }
                 }
                 _meniu.Add(update_camp_meniu);

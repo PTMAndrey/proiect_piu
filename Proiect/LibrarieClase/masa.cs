@@ -26,50 +26,18 @@ namespace LibrarieClase
             total_plata = 0;
             locatie = string.Empty;
         }
-        public Masa(string informatii_masa)//, bool citit_din_consola = false)
+        public Masa(string informatii_masa)
         {
             string[] info_masa = informatii_masa.Split(';');
 
-            //try
-            //{
-                //if (citit_din_consola == false) 
-                    locuri = Convert.ToInt32(info_masa[1]);
-                //else
-                  //  locuri = Convert.ToInt32(info_masa[0]); // am citit de la consola
+            locuri = Convert.ToInt32(info_masa[1]);
+            id = Convert.ToInt32(info_masa[0]);
+            last_id = id;
+            ocupat = Convert.ToBoolean(info_masa[2]);
+            cod_unic = Convert.ToInt32(info_masa[3]);
 
-            /*}
-            catch (FormatException)
-            {
-                Console.WriteLine("Incorect! Trebuie introdus un numar intreg pozitiv!");
-                locuri = -1;
-            }
-            if( locuri != -1 )*/
-                //if (citit_din_consola == false) // citire din fisier
-                //{
-                    id = Convert.ToInt32(info_masa[0]);
-                    last_id = id;
-                    ocupat = Convert.ToBoolean(info_masa[2]);
-                    cod_unic = Convert.ToInt32(info_masa[3]);
-
-                    /*if (ocupat == false)
-                        total_plata = 0;
-                    else*/
-                        total_plata = Validari.Validare_ConvertToFloat_Pret_Meniu(info_masa[4]);
-                    locatie = info_masa[5];
-                /*}
-                else
-                { 
-                    cod_unic = GenerareCodUnic();
-                    //if (Validari.Verificare_CodUnic == true)
-                            
-                    last_id++;
-                    id = last_id;
-                    ocupat = false;
-                    total_plata = 0;
-                    locatie = info_masa[1];
-                }*/
-
-
+            total_plata = Validari.Validare_ConvertToFloat_Pret_Meniu(info_masa[4]);
+            locatie = info_masa[5];
         }
         public int GenerareCodUnic()
         {
@@ -85,7 +53,6 @@ namespace LibrarieClase
                 if (Array.Exists(verificare, element => element == nr) == false)
                     break;
             } while (true);
-
             return nr;
         }
 
@@ -94,25 +61,20 @@ namespace LibrarieClase
             if (id_pentru_afisare_info_client == 0) // afisare normala pt mese disponibile
             {
                 if (ocupat == false)
-                {
-                    //return $"\tMasa cu   ID [ {id} ]   se afla in    [ {locatie_masa}\t]\tsi are [ {locuri} ] locuri disponibile.";
                     return $"\t\t[ {id} ] \t\t [ {locatie} ] \t\t [ {locuri} ]";
-                }
-                /*else
-                    s = $"\t[ OCUPAT ] Masa [ {id} ] nu este disponibila.";*/
             }
             else // afisez informatii pentru cazul in care un client vrea sa rezerve si e nevoie de afisare mese libere
             {
                 return $"\t Masa cu ID [ {id_pentru_afisare_info_client} ] se afla in [ {locatie} ] si are [ {locuri} ] cu total de plata [ {total_plata} ].";
             }
-            
+
             return null;
         }
 
         public string ConversieLaSir_PentruScriereInFisier()
         {
             string s = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}",
-                SEPARATOR_PRINCIPAL_FISIER, id.ToString(), locuri.ToString(), ocupat.ToString(), cod_unic.ToString(), total_plata.ToString(), ( locatie ?? "NEDEFINIT") );
+                SEPARATOR_PRINCIPAL_FISIER, id.ToString(), locuri.ToString(), ocupat.ToString(), cod_unic.ToString(), total_plata.ToString(), (locatie ?? "NEDEFINIT"));
 
             return s;
         }

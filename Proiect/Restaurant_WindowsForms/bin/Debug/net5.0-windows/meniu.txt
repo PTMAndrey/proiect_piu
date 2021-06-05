@@ -9,13 +9,14 @@
 9;Cartofi widges;7;Mancare
 10;Paste;8,9;Mancare
 11;Mamaliguta la cuptor;24,5;Mancare
-12;Coca Cola;4,5;Bautura
-13;Pepsi;4,5;Bautura
-14;Sprite;4,5;Bautura
-15;Absolut;18,5;Bautura
-16;Jack Daniel's;22;Bautura
-17;Gin;20;Bautura
-18;Martini;17;Bautura
-19;Fanta;4,5;Bautura
-20;Clatite cu dulceata;10;Desert
-21;Papanasi;10;Desert
+12;Miel la proțap;25,5;Mancare
+13;Coca Cola;4,5;Bautura
+14;Pepsi;4,5;Bautura
+15;Sprite;4,5;Bautura
+16;Absolut;18,5;Bautura
+17;Jack Daniel's;22;Bautura
+18;Gin;20;Bautura
+19;Martini;17;Bautura
+20;Fanta;4,5;Bautura
+21;Clatite cu dulceata;10;Desert
+22;Papanasi;10;Desert

@@ -18,9 +18,6 @@ namespace NivelAccesData
             Stream sFisierText = File.Open(NumeFisier, FileMode.OpenOrCreate);
             sFisierText.Close();
 
-            //liniile de mai sus pot fi inlocuite cu linia de cod urmatoare deoarece
-            //instructiunea 'using' va apela sFisierText.Close();
-            //using (Stream sFisierText = File.Open(numeFisier, FileMode.OpenOrCreate)) { }
         }
 
         public List<Masa> GetInfo()
@@ -31,7 +28,6 @@ namespace NivelAccesData
             {
                 string line;
 
-                //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
                 while ((line = sr.ReadLine()) != null)
                 {
                     Masa masaDinFisier = new Masa(line);
@@ -48,7 +44,6 @@ namespace NivelAccesData
             {
                 string line;
 
-                //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
                 while ((line = sr.ReadLine()) != null)
                 {
                     Masa masaDinFisier = new Masa(line);
@@ -109,18 +104,6 @@ namespace NivelAccesData
                             }
 
                         }
-                        /*else
-                        if (ocupat == true && locuri == 0 && update_total_plata == "") // update pentru eliberare masa
-                        {
-                            masaDinFisier.ocupat = false;
-                            masaDinFisier.cod_unic = masaDinFisier.GenerareCodUnic();
-                            masaDinFisier.total_plata = 0;
-                        }*/
-
-
-                        // update pentru actualizare pret total masa
-
-
                         _masa.Add(masaDinFisier);
 
                         verificare = true;
@@ -214,11 +197,6 @@ namespace NivelAccesData
         public void AddMasa(Masa b)
         {
             b.cod_unic = Validari.Validare_Cod_Unic(b, NumeFisier);
-
-            
-
-            //instructiunea 'using' va apela la final swFisierText.Close();
-            //al doilea parametru setat la 'true' al constructorului StreamWriter indica modul 'append' de deschidere al fisierului
             using (StreamWriter swFisierText = new StreamWriter(NumeFisier, true))
             {
                 swFisierText.WriteLine(b.ConversieLaSir_PentruScriereInFisier());

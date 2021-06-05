@@ -51,7 +51,6 @@ namespace LibrarieClase
             using (StreamReader sr = new StreamReader(NumeFisier))
             {
                 string line;
-
                 //citeste cate o linie si creaza un obiect de tip Masa pe baza datelor din linia citita
                 while ((line = sr.ReadLine()) != null)
                 {
